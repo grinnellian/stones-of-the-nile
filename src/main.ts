@@ -12,20 +12,22 @@ import { PyramidView } from './rendering/pyramid-view.js';
 const config = createForemanScenario();
 let state = createGameState(config);
 let running = false;
-let speed = 1; // ticks per frame
+let speed = 1;
 let tickCount = 0;
 
-// --- 3D Pyramid View ---
+// --- 3D Pyramid View (always on) ---
 let pyramidView: PyramidView | null = null;
-let show3D = false;
 const log: string[] = [];
+
+// --- Panel fold state ---
+const collapsed: Record<string, boolean> = {};
 
 function addLog(msg: string, cls: string = '') {
   log.unshift(`<span class="log-entry ${cls}">[Y${state.date.year} ${state.date.season} T${state.date.tick}] ${msg}</span>`);
   if (log.length > 100) log.pop();
 }
 
-// --- Auto-transport: move dressed stone from quarry to construction site ---
+// --- Auto-transport ---
 function autoTransport(): void {
   const quarry = state.sites.find((s) => s.id === 'tura-quarry');
   const route = state.routes.find((r) => r.id === 'tura-to-giza');
@@ -54,14 +56,11 @@ function autoTransport(): void {
 
 // --- Game Loop ---
 function gameTick(): void {
-  // Auto-transport before tick
   autoTransport();
-
   const result = tick(state, config.contracts, config.recipes);
   state = result.state;
   tickCount++;
 
-  // Log interesting events
   for (const [key, pr] of result.report.production) {
     for (const [type, qty] of Object.entries(pr.produced)) {
       if (qty && qty > 0) {
@@ -79,10 +78,7 @@ function gameTick(): void {
   }
 
   if (result.report.seasonEnd) {
-    addLog(
-      `=== Season ${result.report.date.season} ended ===`,
-      'log-season'
-    );
+    addLog(`=== Season ${result.report.date.season} ended ===`, 'log-season');
     for (const cp of result.report.contractUpdates) {
       const contract = config.contracts.find((c) => c.id === cp.contractId);
       if (contract) {
@@ -139,29 +135,17 @@ function resetGame(): void {
   render();
 }
 
-function toggle3D(): void {
-  show3D = !show3D;
-  const container = document.getElementById('pyramid-3d')!;
-  container.style.display = show3D ? 'block' : 'none';
-
-  if (show3D && !pyramidView) {
-    pyramidView = new PyramidView({
-      container,
-      layers: 20,
-      baseSize: 40,
-      blocksPlaced: getDressedStoneAtGiza(),
-    });
-  }
+function togglePanel(id: string): void {
+  collapsed[id] = !collapsed[id];
   render();
 }
 
-/** Get total dressed stone delivered to construction site — drives 3D block count */
 function getDressedStoneAtGiza(): number {
   const giza = state.sites.find((s) => s.id === 'giza-plateau');
   return Math.floor(giza?.stockpile[ResourceType.DressedStone] ?? 0);
 }
 
-// --- Rendering ---
+// --- Rendering helpers ---
 function formatResource(name: string, qty: number | undefined): string {
   const q = qty ?? 0;
   const cls = q === 0 ? 'zero' : '';
@@ -170,173 +154,172 @@ function formatResource(name: string, qty: number | undefined): string {
 }
 
 function renderStockpile(stockpile: Stockpile): string {
-  const entries = Object.entries(stockpile).filter(
-    ([_, v]) => v !== undefined
-  );
+  const entries = Object.entries(stockpile).filter(([_, v]) => v !== undefined);
   if (entries.length === 0) return '<div class="resource-row"><span class="resource-name">Empty</span></div>';
   return entries.map(([k, v]) => formatResource(k, v)).join('');
 }
 
+function panel(id: string, title: string, bodyHtml: string): string {
+  const isClosed = collapsed[id];
+  return `
+    <div class="panel ${isClosed ? 'collapsed' : ''}">
+      <div class="panel-header" onclick="window.__togglePanel('${id}')">
+        <h2>${title}</h2>
+        <span class="panel-toggle">▼</span>
+      </div>
+      <div class="panel-body">${bodyHtml}</div>
+    </div>`;
+}
+
+// --- Main render ---
 function render(): void {
-  const app = document.getElementById('app')!;
+  const overlay = document.getElementById('ui-overlay')!;
   const date = state.date;
   const floodLevel =
     state.floodSchedule.find((f) => f.year === date.year)?.level ?? 0.5;
-
   const seasonClass = `season-${date.season}`;
 
-  // Contract display
-  const contractHtml = state.contracts
+  // Update 3D pyramid
+  if (pyramidView) {
+    pyramidView.setBlocksPlaced(getDressedStoneAtGiza());
+  }
+
+  // --- Contract panel ---
+  const contractBody = state.contracts
     .map((cp) => {
       const contract = config.contracts.find((c) => c.id === cp.contractId)!;
-      const statusCls = cp.completed
-        ? 'status-completed'
-        : cp.failed
-          ? 'status-failed'
-          : 'status-active';
-      const statusText = cp.completed
-        ? 'COMPLETED'
-        : cp.failed
-          ? 'FAILED'
-          : 'ACTIVE';
-
+      const statusCls = cp.completed ? 'status-completed' : cp.failed ? 'status-failed' : 'status-active';
+      const statusText = cp.completed ? 'COMPLETED' : cp.failed ? 'FAILED' : 'ACTIVE';
       const pips = Array.from({ length: contract.durationSeasons }, (_, i) => {
         if (i < cp.seasonsFulfilled) return 'fulfilled';
         if (i < cp.seasonsAttempted) return 'missed';
         return 'pending';
-      })
-        .map((cls) => `<div class="progress-pip ${cls}"></div>`)
-        .join('');
-
+      }).map((cls) => `<div class="progress-pip ${cls}"></div>`).join('');
       const reqStr = contract.requiredOutput
         .map((r) => `${r.quantity} ${r.type.replace(/_/g, ' ')}`)
         .join(', ');
-
       return `
-        <div style="margin-bottom:8px">
-          <strong>${contract.name}</strong>
-          <span class="contract-status ${statusCls}">${statusText}</span>
-          <div style="font-size:0.8em;color:#8b7d6b;margin:2px 0">${contract.description}</div>
-          <div style="font-size:0.8em">Required: ${reqStr}/season for ${contract.durationSeasons} seasons</div>
-          <div class="progress-bar">${pips}</div>
-          <div style="font-size:0.75em;color:#8b7d6b">${cp.seasonsFulfilled}/${contract.durationSeasons} fulfilled, ${cp.seasonsAttempted} attempted</div>
-        </div>
-      `;
-    })
-    .join('');
+        <strong>${contract.name}</strong>
+        <span class="contract-status ${statusCls}">${statusText}</span>
+        <div style="font-size:0.75em;color:#8b7d6b;margin:2px 0">${contract.description}</div>
+        <div style="font-size:0.75em">${reqStr}/season for ${contract.durationSeasons} seasons</div>
+        <div class="progress-bar">${pips}</div>
+        <div style="font-size:0.7em;color:#8b7d6b">${cp.seasonsFulfilled}/${contract.durationSeasons} fulfilled</div>`;
+    }).join('');
 
-  // Sites
-  const sitesHtml = state.sites
-    .map((site) => {
-      const producerHtml = site.producers
-        .map((p) => {
-          const recipe = config.recipes[p.recipeId];
-          const statusCls = p.active ? 'producer-active' : 'producer-idle';
-          const progressPct = recipe ? (p.progress / recipe.duration) * 100 : 0;
-          return `<div class="producer-status">
-            <span class="${statusCls}">${p.active ? '>' : 'x'}</span>
-            ${recipe?.name ?? p.recipeId}
-            ${p.active ? `[${progressPct.toFixed(0)}%]` : '[idle]'}
-          </div>`;
-        })
-        .join('');
-
-      const workerStr = `L:${site.workers.laborers} C:${site.workers.craftsmen} S:${site.workers.scribes} | Sat: ${(site.workers.satisfaction * 100).toFixed(0)}%`;
-
-      return `
-        <div class="panel">
-          <div class="site-name">${site.name}</div>
-          <div style="font-size:0.75em;color:#8b7d6b">${site.type} | Workers: ${workerStr}</div>
-          ${producerHtml}
-          <h2>Stockpile</h2>
-          ${renderStockpile(site.stockpile)}
-        </div>
-      `;
-    })
-    .join('');
-
-  // Transport
-  const routesHtml = state.routes
-    .map((r) => {
-      const inTransitCount = r.inTransit.length;
-      const batches = r.inTransit
-        .map((b) => {
-          const contents = Object.entries(b.resources)
-            .map(([k, v]) => `${v} ${k.replace(/_/g, ' ')}`)
-            .join(', ');
-          return `<div style="font-size:0.75em;color:#a0a0c0">  ${contents} (${b.ticksRemaining} ticks away)</div>`;
-        })
-        .join('');
-      return `<div style="margin-bottom:4px">
-        <span style="color:#6db3f2">${r.fromSiteId} → ${r.toSiteId}</span>
-        ${r.viaNile ? '🏛️ Nile' : 'overland'}
-        | ${inTransitCount} batch${inTransitCount !== 1 ? 'es' : ''} in transit
-        ${batches}
+  // --- Sites panels ---
+  const sitePanels = state.sites.map((site) => {
+    const producerHtml = site.producers.map((p) => {
+      const recipe = config.recipes[p.recipeId];
+      const statusCls = p.active ? 'producer-active' : 'producer-idle';
+      const progressPct = recipe ? (p.progress / recipe.duration) * 100 : 0;
+      return `<div class="producer-status">
+        <span class="${statusCls}">${p.active ? '▸' : '×'}</span>
+        ${recipe?.name ?? p.recipeId}
+        ${p.active ? `[${progressPct.toFixed(0)}%]` : '[idle]'}
       </div>`;
-    })
-    .join('');
+    }).join('');
 
-  // Update 3D pyramid view with current block count
-  if (pyramidView && show3D) {
-    pyramidView.setBlocksPlaced(getDressedStoneAtGiza());
-  }
+    const workerStr = `L:${site.workers.laborers} C:${site.workers.craftsmen} S:${site.workers.scribes} | ${(site.workers.satisfaction * 100).toFixed(0)}%`;
 
-  app.innerHTML = `
-    <div class="controls">
-      <button onclick="window.__startGame()" ${running ? 'disabled' : ''}>Play</button>
-      <button onclick="window.__stopGame()" ${!running ? 'disabled' : ''}>Pause</button>
-      <button onclick="window.__tickOnce()" ${running ? 'disabled' : ''}>Step</button>
-      <button class="danger" onclick="window.__resetGame()">Reset</button>
-      <button onclick="window.__toggle3D()" style="margin-left:auto">${show3D ? 'Hide' : 'Show'} 3D View</button>
+    const body = `
+      <div style="font-size:0.7em;color:#8b7d6b;margin-bottom:4px">${site.type} | ${workerStr}</div>
+      ${producerHtml}
+      <div class="site-separator"></div>
+      ${renderStockpile(site.stockpile)}`;
+
+    return panel(`site-${site.id}`, site.name, body);
+  }).join('');
+
+  // --- Transport panel ---
+  const routesBody = state.routes.map((r) => {
+    const inTransitCount = r.inTransit.length;
+    const batches = r.inTransit.map((b) => {
+      const contents = Object.entries(b.resources)
+        .map(([k, v]) => `${v} ${k.replace(/_/g, ' ')}`)
+        .join(', ');
+      return `<div style="font-size:0.7em;color:#a0a0c0;padding-left:8px">${contents} (${b.ticksRemaining}t)</div>`;
+    }).join('');
+    return `<div style="margin-bottom:4px">
+      <span style="color:#6db3f2;font-size:0.8em">${r.fromSiteId} → ${r.toSiteId}</span>
+      <span style="font-size:0.7em">${r.viaNile ? 'Nile' : 'overland'} | ${inTransitCount} batch${inTransitCount !== 1 ? 'es' : ''}</span>
+      ${batches}
+    </div>`;
+  }).join('');
+
+  // --- Calendar panel ---
+  const calendarBody = `
+    <div>Year <strong>${date.year}</strong> —
+      <span class="season-indicator ${seasonClass}">${date.season.toUpperCase()}</span>
+      — Tick ${date.tick + 1}/${TICKS_PER_SEASON}
+    </div>
+    <div style="margin-top:4px;font-size:0.8em">
+      Flood: ${(floodLevel * 100).toFixed(0)}%
+      <div class="flood-bar"><div class="flood-fill" style="width:${floodLevel * 100}%"></div></div>
+    </div>
+    <div style="margin-top:2px;font-size:0.7em;color:#8b7d6b">Tick #${tickCount}</div>`;
+
+  // --- Assemble overlay ---
+  overlay.innerHTML = `
+    <div class="top-bar">
+      <span class="title">STONES OF THE NILE</span>
+      <span class="date-display">
+        Y${date.year}
+        <span class="season-indicator ${seasonClass}" style="font-size:0.75em">${date.season.toUpperCase()}</span>
+        T${date.tick + 1}/${TICKS_PER_SEASON}
+      </span>
+      <button onclick="window.__startGame()" ${running ? 'disabled' : ''}>▶</button>
+      <button onclick="window.__stopGame()" ${!running ? 'disabled' : ''}>⏸</button>
+      <button onclick="window.__tickOnce()" ${running ? 'disabled' : ''}>⏭</button>
       <span class="speed-label">Speed:</span>
-      <button onclick="window.__setSpeed(1)" ${speed === 1 ? 'disabled' : ''}>1x</button>
-      <button onclick="window.__setSpeed(3)" ${speed === 3 ? 'disabled' : ''}>3x</button>
-      <button onclick="window.__setSpeed(10)" ${speed === 10 ? 'disabled' : ''}>10x</button>
+      <button class="btn-sm" onclick="window.__setSpeed(1)" ${speed === 1 ? 'disabled' : ''}>1×</button>
+      <button class="btn-sm" onclick="window.__setSpeed(3)" ${speed === 3 ? 'disabled' : ''}>3×</button>
+      <button class="btn-sm" onclick="window.__setSpeed(10)" ${speed === 10 ? 'disabled' : ''}>10×</button>
+      <button class="danger btn-sm" onclick="window.__resetGame()">Reset</button>
     </div>
 
-    <div class="dashboard">
-      <div class="panel">
-        <h2>Calendar</h2>
-        <div>Year <strong>${date.year}</strong> &mdash;
-          <span class="season-indicator ${seasonClass}">${date.season.toUpperCase()}</span>
-          &mdash; Tick ${date.tick + 1}/${TICKS_PER_SEASON}
-        </div>
-        <div style="margin-top:6px;font-size:0.85em">
-          Nile Flood Level: ${(floodLevel * 100).toFixed(0)}%
-          <div class="flood-bar"><div class="flood-fill" style="width:${floodLevel * 100}%"></div></div>
-        </div>
-        <div style="margin-top:4px;font-size:0.8em;color:#8b7d6b">Tick #${tickCount}</div>
+    <div class="panels-area">
+      <div class="sidebar-left">
+        ${panel('calendar', 'Calendar', calendarBody)}
+        ${panel('contract', 'Contract', contractBody)}
+        ${panel('transport', 'Transport', routesBody)}
       </div>
-
-      <div class="panel">
-        <h2>Contract</h2>
-        ${contractHtml}
+      <div class="sidebar-right">
+        ${sitePanels}
       </div>
+    </div>
 
-      ${sitesHtml}
-
-      <div class="panel">
-        <h2>Transport</h2>
-        ${routesHtml}
+    <div class="bottom-bar ${collapsed['log'] ? 'collapsed' : ''}">
+      <div class="panel-header" onclick="window.__togglePanel('log')">
+        <h2 style="color:#c9a85c;font-size:0.85em;margin:0;border:none;padding:0">Event Log</h2>
+        <span class="panel-toggle" style="color:#8b7d6b;font-size:0.8em">▼</span>
       </div>
-
-      <div class="panel">
-        <h2>Event Log</h2>
-        <div class="log">${log.join('')}</div>
-      </div>
+      <div class="log">${log.join('')}</div>
     </div>
   `;
 }
 
-// Expose to window for button onclick handlers
+// --- Init 3D view (always on) ---
+function init3D(): void {
+  const container = document.getElementById('pyramid-3d')!;
+  pyramidView = new PyramidView({
+    container,
+    layers: 20,
+    baseSize: 40,
+    blocksPlaced: getDressedStoneAtGiza(),
+  });
+}
+
+// Expose to window
 (window as any).__startGame = startGame;
 (window as any).__stopGame = stopGame;
 (window as any).__tickOnce = gameTick;
 (window as any).__setSpeed = setSpeed;
 (window as any).__resetGame = resetGame;
-(window as any).__toggle3D = toggle3D;
+(window as any).__togglePanel = togglePanel;
 
-// Initial render
+// Boot
 addLog('Welcome, Foreman. The Vizier expects results.', 'log-season');
 addLog('Deliver 30 dressed stone/season to Giza for 3 seasons.', 'log-contract');
+init3D();
 render();
