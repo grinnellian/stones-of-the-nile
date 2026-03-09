@@ -828,6 +828,53 @@ export const TRADE_ROUTES: TradeRoute[] = [
       'The route south from Memphis to Meidum (~65 km), carrying supplies for the conversion ' +
       'of Meidum\'s step pyramid into a true pyramid under Sneferu.',
   },
+  {
+    id: 'nile-tura-to-meidum',
+    name: 'Tura–Meidum Casing Stone Run',
+    type: TradeRouteType.Nile,
+    waypoints: ['tura-quarry', 'dahshur', 'meidum'],
+    travelTime: 3,
+    seasonal: false,
+    era: Era.Sneferu,
+    typicalCargo: [ResourceType.Limestone, ResourceType.DressedStone],
+    historicalNote:
+      'Direct barge route from Tura quarries to Meidum, crossing the Nile and sailing upstream ' +
+      '~65 km aided by the prevailing north wind. The Merer Papyri (Khufu era) establish that ' +
+      'stone barges traveled directly from quarry to construction site without transshipping at ' +
+      'Memphis. Tura fine limestone provided the outer casing for Meidum\'s conversion from step ' +
+      'pyramid to true pyramid.',
+  },
+  {
+    id: 'nile-fayum-to-meidum',
+    name: 'Fayum–Meidum Provisioning Route',
+    type: TradeRouteType.Nile,
+    waypoints: ['fayum-farms', 'meidum'],
+    travelTime: 2,
+    seasonal: false,
+    era: Era.Sneferu,
+    typicalCargo: [ResourceType.Grain, ResourceType.Water],
+    historicalNote:
+      'The Bahr Yussef canal, a natural branch of the Nile, connected the Fayum depression ' +
+      'to the main river near Meidum. At ~30-40 km apart, Fayum grain was the obvious food ' +
+      'source for Meidum\'s construction workforce, bypassing the 130 km round trip through ' +
+      'Memphis. During inundation the waterway was fully navigable; at other times donkey ' +
+      'caravans covered the overland distance in 1-2 days.',
+  },
+  {
+    id: 'nile-meidum-to-dahshur',
+    name: 'Meidum–Dahshur Transfer Route',
+    type: TradeRouteType.Nile,
+    waypoints: ['meidum', 'dahshur'],
+    travelTime: 2,
+    seasonal: false,
+    era: Era.Sneferu,
+    typicalCargo: [ResourceType.Limestone, ResourceType.DressedStone, ResourceType.CopperTools],
+    historicalNote:
+      'When Sneferu shifted operations from Meidum to Dahshur (~30 km downstream), materials, ' +
+      'workers, and partially-dressed stone blocks were transferred north along the Nile. ' +
+      'This route became critical during the transition between sites and supports the ' +
+      'historical narrative of resource redirection after Meidum\'s abandonment.',
+  },
 
   // ---- OVERLAND ROUTES ----
   {
