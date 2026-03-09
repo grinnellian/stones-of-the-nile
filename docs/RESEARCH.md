@@ -153,3 +153,13 @@ The elegant mathematical insight:
 - Steady-state requirement: solution must work on cycle 1, 10, and 100
 - Optimization metrics (cycle count, symbol count, reactor count) as replayability
 - The satisfaction comes from watching your machine **run**
+
+## Construction Theories — Deep Dives
+
+Detailed operational breakdowns for each construction theory, written as process blueprints for game simulation. Comparative summary at [theories/SUMMARY.md](theories/SUMMARY.md).
+
+- **[Theory A: External Ramp](theories/external-ramp.md)** — Brute-force hauling up a massive temporary ramp; dual competing supply chains that invert as the ramp outgrows the pyramid.
+- **[Theory B: Internal Spiral Ramp](theories/internal-spiral.md)** — Houdin's two-phase system: external ramp for the lower 30%, internal corridor for the upper 70%; trades material problems for skilled-labor bottlenecks.
+- **[Theory C: Hydraulic Lift](theories/hydraulic-lift.md)** — Lock-and-shaft water lift system; front-loaded infrastructure investment with extreme Nile-flood dependency and single-point-of-failure risk.
+- **[Theory D: Geopolymer / Cast-in-Place](theories/geopolymer.md)** — Blocks cast from crushed aggregate + natron binder; replaces heavy hauling with process engineering, bottlenecked on natron supply from Wadi Natrun.
+- **[Theory E: Accretion Overbuild](theories/accretion-overbuild.md)** — Build a massive stepped trapezoid with integrated ramps, carve down to final pyramid form, cascade removed material to downstream structures; the whole Giza complex as one DAG.
