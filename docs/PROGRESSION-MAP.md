@@ -236,7 +236,7 @@ All Stage 2 locations plus:
 |----|---------------|
 | `meidum` | **Act 1 construction site** — converting a step pyramid to a true pyramid |
 | `dahshur` | **Act 2 construction site** — Bent Pyramid, then Red Pyramid prep |
-| `wadi-natrun` | **Natron supply** — now relevant for mortar/gypsum needs at scale |
+| `wadi-natrun` | **Natron supply** — relevant for mortar/gypsum needs at scale. **If hybrid casting is discovered**: becomes the feedstock source for casting operations. Small-scale natron orders begin here for the Stage 3 casting experiment. |
 | `fayum-basalt` | **Basalt quarry** — temple pavements at Dahshur |
 | `fayum-farms` | **Elevated importance** — feeding workers at TWO distant construction sites simultaneously |
 | `hermopolis` | **Middle Egypt waypoint** — grain collection hub for sites south of Memphis |
@@ -291,6 +291,15 @@ ACT 2 — DAHSHUR (BENT PYRAMID):
   3. Throughput requirement drops (less volume needed at shallower angle)
   4. BUT existing pipeline has blocks of the wrong size in transit
   5. Worker retraining: different cutting specs
+
+  THE FLOOD DISCOVERY EVENT (after angle change, next Akhet):
+  Workers returning to the Dahshur quarry find hardened crusts where
+  quarry dust was pooled with floodwater. If the player investigates:
+  1. Small research crew (~20 workers, 1 season)
+  2. Deliberately mixes quarry dust + natron + water in controlled batches
+  3. Produces test blocks → hybrid casting unlocked as composable technique
+  4. Wadi Natrun route importance elevates from "mortar ingredient" to
+     "casting feedstock source" (small scale at first)
 ```
 
 **Primary bottleneck**: **Simultaneous site management**. The player must keep Meidum supplied while also preparing Dahshur. After Meidum fails, the resource pivot to Dahshur must be fast — but there are barges in transit, quarry orders already cut, workers stationed at the wrong site. The logistics of CHANGING PLANS is the challenge.
@@ -366,7 +375,7 @@ RED PYRAMID PHASE (first half of stage):
   - Established Tura-Dahshur route runs smoothly
   - Worker infrastructure already in place
 
-  Key addition: THEORY SELECTION
+  Key addition: THEORY SELECTION + HYBRID CASTING SCALE-UP
   ┌─────────────────────────────────────────────────────┐
   │ Theory B (Internal Ramp):                           │
   │   Requires: more skilled masons, fewer bulk haulers │
@@ -382,6 +391,14 @@ RED PYRAMID PHASE (first half of stage):
   │   Requires: enormous fill material volumes          │
   │   The player proved this works at 43 degrees        │
   │   but must solve the Giza-scale problem themselves  │
+  │                                                     │
+  │ HYBRID CASTING (composable, any quarry-based theory)│
+  │   If discovered Stage 3 or researched here:         │
+  │   Casting fraction slider (0-35%) for block mix     │
+  │   Pounding pit at Dahshur quarry (year-round)       │
+  │   Wadi Natrun route elevates to ACTIVE supply chain │
+  │   ~140 donkey-loads/day natron at 25% casting       │
+  │   Seasonal rhythm: pound dry, cast during flood     │
   └─────────────────────────────────────────────────────┘
 
 
@@ -409,6 +426,8 @@ GIZA PREPARATION PHASE (second half of stage):
 - Theory C: canal construction at Giza (massive labor investment during preparation phase)
 - Theory A: stockpiling fill material (straightforward but enormous volume)
 - Theory E: understanding the cascading build pattern (intellectual unlock, but requires the player to plan all three Giza pyramids simultaneously)
+
+**Tertiary bottleneck (if hybrid casting active)**: **Wadi Natrun supply chain scale-up**. At the Red Pyramid's scale with a 10-15% casting fraction, natron demand is modest (~4-5 tons/day, ~60-70 donkey-loads). But the player must establish the route infrastructure NOW that will support 25%+ casting at Giza: water stations along the 100km desert route, donkey breeding/acquisition, stockpile buffers at both ends. The `overland-memphis-to-wadi-natrun` route transitions from "occasional mortar ingredient" to "dedicated supply chain" during this stage.
 
 ### Geographic Constraints
 
@@ -461,6 +480,7 @@ Key location roles:
 | `hermopolis` | **Middle Egypt grain relay** — waypoint on the Aswan-Memphis route |
 | `wadi-al-jarf` | **Red Sea logistics hub** — alternative Sinai copper route |
 | `hatnub` | **Alabaster** — for the sarcophagus and ritual objects |
+| `wadi-natrun` | **Natron supply** — mortar ingredient for all theories. **With hybrid casting (D+E blend)**: becomes a **critical** supply node. At 25% casting fraction, ~8-10 tons/day of natron, ~140 donkey-loads daily, ~500-800 donkeys continuously in transit on the 100km route. The `overland-memphis-to-wadi-natrun` route transitions from secondary to primary logistics commitment. |
 | `fayum-farms` | **Bread basket** — grain for the massive workforce |
 | `fayum-basalt` | **Basalt** — mortuary temple pavement |
 
@@ -520,6 +540,33 @@ PHASE 2: GREAT PYRAMID CARVE-DOWN + KHAFRE BUILD-UP (Years 12-22)
   - Aswan: granite for Khafre's valley temple
   - Food supply must SUSTAIN — workforce transitions from haulers to precision cutters
 
+  HYBRID CASTING LAYER (D+E blend, if active):
+  ┌──────────────────────────────────────────────────────┐
+  │  Quarry waste (dust, chips, rubble from Giza quarry) │
+  │    |                                                  │
+  │    v                                                  │
+  │  Pounding pits (year-round, animal-powered)          │
+  │    |                                                  │
+  │    v                                                  │
+  │  Aggregate stockpile (dry months → build up)         │
+  │    |                                                  │
+  │    + Natron (Wadi Natrun, 100km, ~140 loads/day)     │
+  │    + Kaolinite clay (Nile floodplain, local)         │
+  │    + Water (flood season, Nile → plateau)            │
+  │    |                                                  │
+  │    v                                                  │
+  │  Mixing stations on overbuild working face           │
+  │    |                                                  │
+  │    v                                                  │
+  │  Cast blocks (0-35% of overbuild, player-controlled) │
+  │                                                      │
+  │  QUALITY PROPAGATION:                                │
+  │  Cast overbuild → carve-down → cascade to Khafre    │
+  │  → reconstituted material, easier to recast          │
+  │  → but quality degrades with each generation         │
+  │  → casting fraction at Khufu constrains Khafre opts  │
+  └──────────────────────────────────────────────────────┘
+
 
 PHASE 3: KHAFRE CARVE-DOWN + MENKAURE + TEMPLES (Years 20-30+)
 
@@ -577,7 +624,7 @@ PHASE 3: KHAFRE CARVE-DOWN + MENKAURE + TEMPLES (Years 20-30+)
 | `abusir` | Listed as `Era.Khufu` but no progression stage explicitly features it | **Post-game / sandbox content**: Abusir was used by 5th Dynasty pharaohs. It could be a Stage 5 secondary site or an epilogue stage. The Abusir Papyri found there provide administrative records — could unlock a "bureaucracy efficiency" bonus if the player establishes operations there. Alternatively, use it as a **practice site** in Stage 4 where the player tests their chosen theory at smaller scale before committing to Giza. |
 | `heliopolis` | Listed as active from Stage 2 but has no material supply chain role | **Religious legitimacy mechanic**: Heliopolis provides theological approval for pyramid projects. If the player neglects Heliopolis (fails to send offerings or maintain the temple), worker morale and political stability suffer. This makes Heliopolis a non-material but mechanically important node. Also a papyrus source for bureaucracy upgrades. |
 | `abydos` | Listed from `Era.Always` but only becomes relevant in Stage 4-5 as a grain hub | **Stage 3 religious event**: Abydos as pilgrimage destination could create a labor drain — workers want to visit Abydos, reducing available construction labor. Managing pilgrimage leave becomes a satisfaction mechanic. |
-| `wadi-natrun` | Has a route from Stage 1 (`Era.Always`) but natron isn't deeply integrated into construction | **Mortar ingredient**: Natron/gypsum is used in gypsum morite for setting blocks. Make it a required (small quantity) input for dressed stone placement. This gives the `overland-memphis-to-wadi-natrun` route a clear mechanical purpose from Stage 2 onward. |
+| `wadi-natrun` | Has a route from Stage 1 (`Era.Always`). Previously weak integration. | **RESOLVED by hybrid casting**: Natron serves as mortar ingredient (small quantities, Stage 2+) and as the alkali activator for hybrid casting (large quantities, Stage 4+). With the D+E blend at Stage 5, Wadi Natrun becomes a **critical** supply node: ~8-10 tons/day at 25% casting fraction, requiring ~500-800 donkeys continuously in transit. The route transitions from optional background to dedicated supply chain across Stages 3-5, giving it a clear narrative arc. |
 | `hermopolis` | Waypoint on the Aswan-Memphis granite route; passive role | **Middle Egypt governor seat in Stage 4-5**: When the player manages kingdom-wide grain collection, Hermopolis becomes the administrative hub for Middle Egyptian nomes. The player appoints a governor here. Hermopolis also controls access to `hatnub` quarries. |
 | `elephantine` | Gateway to Aswan; passive in current data | **Nilometer mechanic**: Elephantine's nilometer measured the annual flood. Give the player advance flood predictions based on Elephantine readings — but only if they maintain a garrison/governor there. This creates a "pay for information" trade-off: invest resources at Elephantine for better seasonal planning. |
 
@@ -585,7 +632,7 @@ PHASE 3: KHAFRE CARVE-DOWN + MENKAURE + TEMPLES (Years 20-30+)
 
 | ID | Issue | Suggestion |
 |----|-------|------------|
-| `overland-memphis-to-wadi-natrun` | Available from `Era.Always` but no stage explicitly requires natron | Tie to mortar production as noted above. |
+| `overland-memphis-to-wadi-natrun` | **RESOLVED by hybrid casting**: Now has a clear progression arc. Optional in Stage 2 (mortar), active in Stage 3 (casting discovery), elevated in Stage 4 (casting scale-up), **critical** in Stage 5 (D+E blend at Giza scale). See Wadi Natrun location entry above. | -- |
 | `overland-fayum-basalt` | Available from `Era.Djoser` but basalt is a luxury material | Make basalt pavement a contract bonus objective: "Complete the mortuary temple with basalt flooring for +reputation." |
 | `overland-memphis-to-hatnub` | Available from `Era.Djoser` but alabaster use is minor | Alabaster sarcophagus as a required contract deliverable in Stage 3+ (Sneferu's burial goods). |
 
@@ -615,7 +662,7 @@ PHASE 3: KHAFRE CARVE-DOWN + MENKAURE + TEMPLES (Years 20-30+)
 | `fayum-farms` | -- | implied | active | **elevated** | active | active |
 | `aswan` | -- | -- | active | active | active | **critical** |
 | `sinai-mines` | -- | -- | active | active | active | **critical** |
-| `wadi-natrun` | -- | -- | optional | active | active | active |
+| `wadi-natrun` | -- | -- | optional | active/discovery | active | **critical** (D+E blend) |
 | `fayum-basalt` | -- | -- | optional | active | active | active |
 | `hatnub` | -- | -- | -- | optional | active | active |
 | `hermopolis` | -- | -- | -- | active | active | active |
@@ -648,7 +695,7 @@ PHASE 3: KHAFRE CARVE-DOWN + MENKAURE + TEMPLES (Years 20-30+)
 | `nile-meidum-to-dahshur` | -- | -- | -- | **active** | background | -- |
 | `nile-tura-to-dahshur` | -- | -- | -- | **critical** | **critical** | background |
 | `overland-memphis-to-sinai` | -- | -- | active | active | active | **critical** |
-| `overland-memphis-to-wadi-natrun` | -- | -- | optional | active | active | active |
+| `overland-memphis-to-wadi-natrun` | -- | -- | optional | active/discovery | **active** | **CRITICAL** (D+E blend) |
 | `overland-fayum-basalt` | -- | -- | optional | active | active | active |
 | `overland-memphis-to-hatnub` | -- | -- | -- | optional | active | active |
 | `sea-delta-to-byblos` | -- | -- | -- | -- | **active** | **critical** |
@@ -684,3 +731,16 @@ PHASE 3: KHAFRE CARVE-DOWN + MENKAURE + TEMPLES (Years 20-30+)
    | **Wooden wedge expansion** | Limestone block extraction | Wood (minimal) | Medium | Drill holes, insert dry wooden wedges, soak with water. Wood expands and cracks the stone along a controlled line. Low consumable cost but requires patience (curing time). |
 
    Design implication: different quarry types should consume different tool/method types. The player can choose methods with different trade-offs — copper tools for speed (but constant supply chain pressure from Sinai), dolerite pounders for reliability (but slower output and more labor), fire-setting for hard stone (but wood and water cost), wooden wedges for economy (but slower). This turns quarry management into a strategic choice rather than a single constraint, and ties more of the map's resource nodes into the quarrying pipeline.
+
+9. **Wadi Natrun route activation progression** — **NEW.** The `overland-memphis-to-wadi-natrun` route now has a clear activation arc tied to hybrid casting:
+
+   | Stage | Wadi Natrun Role | Natron Volume | Route Status |
+   |-------|-----------------|---------------|--------------|
+   | S2 | Mortar ingredient (small quantities) | Trace | Optional |
+   | S3 | Hybrid casting discovery (if player investigates) | ~1-2 tons/day (experiment scale) | Active |
+   | S4 | Hybrid casting at Red Pyramid scale | ~4-5 tons/day at 10-15% casting fraction (~60-70 donkey-loads) | **Active** — dedicated supply chain |
+   | S5 | D+E blend at Giza scale | ~8-10 tons/day at 25% casting fraction (~140 donkey-loads, ~500-800 donkeys in transit) | **CRITICAL** — major logistics commitment |
+
+   The route transitions from a background mortar supply to the game's second-most-important overland route (after the Sinai copper road). This progression should be reflected in route capacity upgrades: the player must invest in water stations along the 100km desert route, donkey herds, and stockpile infrastructure at both Wadi Natrun (harvesting side) and Giza (consumption side). Disruption of the Wadi Natrun route at Stage 5 should be a significant crisis event — analogous to losing copper supply from Sinai, but affecting the casting fraction rather than quarrying.
+
+   Alternative natron sources (burned plant ash from agricultural waste, natron-rich crusts from seasonal evaporite deposits near the Nile) can serve as emergency backup at reduced efficiency, preventing total casting shutdown but degrading block quality. This gives the player a strategic buffer without removing the supply chain pressure entirely.

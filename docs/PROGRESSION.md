@@ -318,6 +318,23 @@ The player receives this as an urgent event with a 2-season deadline to implemen
 3. **Manage the workforce transition**: Workers lose efficiency during the changeover. Satisfaction dips from uncertainty.
 4. **Keep Sneferu confident**: Two major failures in a row. The player must show progress quickly after the angle change to maintain royal support.
 
+### The Flood Discovery: Hybrid Casting Emerges (triggered after Bent Pyramid angle change)
+
+After the Bent Pyramid crisis and the next flood season, the following event fires:
+
+**"Hardened Dust" event:**
+> Workers returning to the Dahshur quarry after the flood find something unusual. Where loose limestone dust and rubble had covered the quarry floor, the ground is hard -- patches of what was powder now feel like stone. The foreman reports that floodwater pooled over the waste piles and left behind consolidated crusts. One worker broke off a piece and says it is as strong as the blocks they cut.
+
+This is a scripted discovery event, not a random occurrence. The player receives a choice:
+
+1. **Investigate** (costs: 1 season of a small research crew, ~20 workers + a senior mason): The crew experiments with deliberately mixing quarry dust, natron (already available for mortar), and water in controlled batches. After several attempts, they produce small test blocks that cure to usable strength. The player unlocks **hybrid casting** as a composable technique -- not a full theory, but a tool that can layer onto their existing approach.
+
+2. **Ignore** (no cost): The observation is filed away. Hybrid casting remains locked until Stage 4, where it can be unlocked through a more expensive deliberate research investment.
+
+If the player investigates, they receive a small-scale demonstration: a batch of 10-20 cast blocks placed alongside quarried blocks in a non-critical section of the Bent Pyramid's upper courses. The blocks perform adequately. The technique is proven in principle but not yet at scale.
+
+**Design intent**: The discovery emerges from the game's existing systems (flood cycle, quarry waste, natron supply) rather than appearing as an arbitrary unlock. The player has already encountered all the ingredients -- limestone dust at the quarry, natron on the Wadi Natrun route, floodwater every Akhet. The event connects dots the player has seen but not combined. This is the "of course" moment -- not "here is a new thing" but "I should have seen this coming."
+
 ### Stage 3 Unlocks (after completing both acts)
 
 - **Governor policies** -- cities and quarries run themselves according to player-defined rules; the player intervenes only when alerts fire
@@ -326,6 +343,7 @@ The player receives this as an urgent event with a 2-season deadline to implemen
 - **Failure diagnostics** -- structural inspection tools, supply chain health dashboards
 - **Granite logistics** -- proven capability to manage long-distance Aswan supply
 - **Theory selection** -- upon completing Stage 3, the player is presented with the choice of construction theories for Stage 4. Theory A (external ramp) remains available but its limits have been demonstrated. Theory B (internal ramp) and Theory C (hydraulic) become available. Theory D (geopolymer) is available as an experimental option.
+- **Hybrid casting** (if investigated) -- available as a composable technique that can layer onto any quarry-based theory chosen for Stage 4. Not a theory itself -- a tool.
 - **Access to the Red Pyramid at Dahshur** for Stage 4
 
 ### Stage 3 Failure Narratives
@@ -377,8 +395,25 @@ The Red Pyramid represents the moment Egyptian engineering got it right. Not thr
 - Bottleneck: recipe consistency and curing time. Bad batches produce weak blocks. Temperature and humidity affect curing. Seasonal variation matters.
 - New mechanic: **Quality control** -- each batch has a quality score based on ingredient ratios, mixing time, and curing conditions. Low-quality blocks degrade over time.
 
+**Hybrid Casting at the Red Pyramid** (available if discovered in Stage 3, or discoverable here through deliberate research):
+
+If the player discovered hybrid casting at Stage 3, it is now a proven technique available for systematic use. The player can allocate a **casting fraction** -- a percentage of blocks (0-35%) that will be cast from quarry waste rather than quarried as finished blocks. At the Red Pyramid's scale, even a modest casting fraction (10-15%) produces meaningful savings in quarry throughput and hauling labor.
+
+The Red Pyramid is an ideal testing ground for hybrid casting at scale:
+- Its conservative 43-degree angle means generous mass relative to height -- lots of interior volume where cast blocks serve well
+- If using Theory E geometry, the overbuild mass is the natural candidate for casting
+- The Wadi Natrun route is already established (natron has been used for mortar since Stage 2)
+- The pounding pit can be set up at the Dahshur quarry to process waste year-round
+
+New mechanics introduced:
+- **Pounding pit**: Assign unskilled workers or animals (donkeys/oxen) to break quarry rubble into graded aggregate. The pit runs year-round, stockpiling processed aggregate for flood-season casting. This is the lowest-skill operation in the game -- break rocks into smaller rocks.
+- **Casting fraction control**: The player sets what percentage of blocks to cast vs. quarry. Higher fractions reduce hauling burden but increase natron consumption and introduce quality variance.
+- **Seasonal casting rhythm**: Pound aggregate during Peret and Shemu (dry months). Cast during Akhet when floodwater delivers water to the plateau and idle farmers provide basket-carrier labor.
+
+If the player did NOT discover hybrid casting in Stage 3, a **deliberate research event** is available: invest 2 seasons and ~50 workers in systematic experimentation with quarry waste, natron, and water. This is more expensive than the Stage 3 organic discovery but achieves the same result.
+
 ### Core Challenge
-**Strategic theory selection and proving it at scale.** The player must commit to a theory and build the infrastructure to support it. This is no longer about reacting to problems -- it is about making an architectural decision that constrains everything downstream.
+**Strategic theory selection and proving it at scale.** The player must commit to a theory and build the infrastructure to support it. This is no longer about reacting to problems -- it is about making an architectural decision that constrains everything downstream. If hybrid casting is available, the player must also decide how aggressively to adopt it -- a casting fraction that works at the Red Pyramid's scale may not be optimal for Giza.
 
 The Red Pyramid is the proving ground. At 105m tall and 220m base, it is large enough to stress-test any theory but not so large that mistakes are unrecoverable. The player should feel confident in their chosen theory by the end -- or realize they chose wrong and must adapt for Stage 5.
 
@@ -482,7 +517,7 @@ The Red Pyramid historically succeeded. There is no structural failure event. In
 ### Construction Theory
 **All theories remain playable.** The player continues with their Stage 4 choice, or switches to Theory E. Each path creates a fundamentally different Stage 5 experience:
 
-#### Theory E Path (Canonical / Recommended)
+#### Theory E Path (Canonical / Recommended) -- with D+E Hybrid Casting Blend
 
 The Giza complex becomes a **directed acyclic graph (DAG)** of material flow:
 
@@ -508,6 +543,46 @@ Quarries → Great Pyramid (overbuild)
    - Bottleneck: downstream absorption. If Khafre's site is not ready to receive, you have a backpressure problem.
 
 **The key coordination challenge**: The Great Pyramid's carve-down produces material for Khafre, but Khafre's build-up must be timed to absorb that material. Meanwhile, Khafre's eventual carve-down feeds Menkaure. The player must orchestrate a pipeline where each node transitions from consumer to producer at the right moment.
+
+**The D+E Blend -- Ultimate Construction Method:**
+
+If the player has unlocked hybrid casting (Stage 3 discovery or Stage 4 research), the Theory E path gains its deepest strategic layer. This is the game's canonical endgame system.
+
+**The casting fraction slider** (0-35%) is now a primary strategic control for each pyramid in the cascade:
+- At 0%: Pure Theory E. All blocks quarried and hauled. Maximum quality, maximum hauling cost.
+- At 15-20%: Moderate hybrid. Overbuild mass is partially cast from quarry waste. Noticeable reduction in hauling labor. Natron supply chain from Wadi Natrun becomes a real logistical commitment (~140 donkey-loads/day).
+- At 30-35%: Aggressive hybrid. Most overbuild is cast. Dramatic hauling savings. But natron dependency is high, cast blocks produce lower-quality cascade material, and the pounding pit / mixing operations dominate the workforce.
+
+**Pounding pit operations at Giza scale:**
+The pounding pit is the game's lowest-skill operation. Workers (or donkeys/oxen driving grinding stones) break quarry rubble into graded aggregate: ~60% coarse (10-30mm) and ~40% fine (<10mm). The pit runs year-round:
+- **Peret and Shemu** (dry months): Pound aggregate and stockpile it. Animal labor frees humans for quarrying.
+- **Akhet** (flood season): Consume stockpiled aggregate for casting. Floodwater delivers water to mixing stations. Idle farmers serve as basket carriers.
+
+This seasonal decoupling -- produce aggregate when water is scarce, consume it when water is abundant -- is a natural rhythm that the player manages through stockpile sizing.
+
+**The 4-tier workforce** under the D+E blend:
+1. **Pounding pit** (unskilled/animal): Break rocks into smaller rocks. Year-round. Can use donkeys/oxen.
+2. **Basket carriers** (seasonal unskilled): Carry slurry, fill molds, fetch water. Flood-season farmer labor.
+3. **Mixers and casters** (semi-skilled): Manage ratios, binder prep, cure monitoring, mold setting. Learnable craft, developed within work gangs.
+4. **Skilled permanent workers**: Casing stones, corner geometry, chamber construction, survey alignment, quality control. The titled workforce from the Wadi al-Jarf papyri.
+
+**Quality propagation through the cascade DAG:**
+This is the game's deepest long-range strategic trade-off. Cast overbuild blocks are reconstituted limestone -- structurally adequate but not identical to quarried stone. When the Great Pyramid's overbuild is carved down and the material cascades to Khafre:
+- Quarried blocks from the carve-down arrive as premium pre-processed stone (same as pure Theory E)
+- Cast blocks from the carve-down arrive as reconstituted limestone -- already partially disaggregated, easier to recast, but slightly lower quality with each generation
+- The player can recast this material at Khafre (it is actually easier to disaggregate than fresh quarried stone), but each recasting degrades quality slightly
+- A player who set the Great Pyramid's casting fraction to 35% sends mostly reconstituted material downstream, constraining quality options at Khafre
+- A player who kept casting at 10-15% pays more at the Great Pyramid but sends premium material downstream, preserving strategic flexibility
+
+The cascade DAG does not just flow material downstream -- it flows **consequences**. The casting fraction at Khufu shapes what is possible at Khafre and Menkaure. This is the kind of long-horizon strategic depth that rewards planning across the full Giza complex, not just one pyramid at a time.
+
+**Natron supply chain from Wadi Natrun:**
+At 25% casting fraction across the Great Pyramid's overbuild:
+- ~8-10 tons of natron per day (vs. ~33 tons/day for full Theory D)
+- ~140 donkey-loads daily, ~500-800 donkeys continuously in transit on the 100km Wadi Natrun route
+- A dedicated logistics operation: route maintenance, water stations for animals, stockpile buffer against disruption
+- Not as extreme as full Theory D, but a real commitment that the player must plan and maintain
+- Alternative alkali sources (burned plant ash, natron-rich flood crusts) can supplement but not replace the Wadi Natrun supply
 
 #### Theory A Path (External Ramp at Giza Scale)
 
@@ -688,16 +763,34 @@ How the resource palette expands across stages:
 | Granite | -- | -- | -- | intro | core | yes |
 | Papyrus | -- | -- | -- | -- | intro | core |
 | GeopolymerMix | -- | -- | -- | -- | Theory D | Theory D |
+| CrushedAggregate | -- | -- | -- | -- | hybrid | hybrid/core |
+| Natron (casting) | -- | -- | -- | discovery | hybrid | hybrid/core |
 | Alabaster | -- | -- | -- | -- | -- | intro |
 | Gold | -- | -- | -- | -- | -- | intro |
 
-"core" = central to the stage's challenge. "intro" = first appears. "yes" = available and relevant.
+"core" = central to the stage's challenge. "intro" = first appears. "yes" = available and relevant. "hybrid" = available when hybrid casting is active. "discovery" = first discoverable.
 
 **New resources not in current ResourceType enum:**
 - **Alabaster** (raw) -- from Hatnub, Middle Egypt. Used for chamber linings and luxury items. Rare, expensive to transport. Needed only in Stage 5 for pharaonic burial chambers.
 - **Gold** (raw) -- from Nubia, far south. Used for burial goods, temple decoration, and diplomatic gifts. Extremely limited supply. Needed only in Stage 5.
+- **CrushedAggregate** -- processed quarry waste from pounding pits. Graded to 60% coarse (10-30mm) / 40% fine (<10mm). Produced year-round by pounding pit labor (unskilled workers or animals). Consumed during flood-season casting operations. First available at Stage 3 (discovery) or Stage 4 (research unlock).
+- **Natron (casting-scale)** -- same material as mortar-grade natron, but at much higher volume. At 25% casting fraction, ~8-10 tons/day vs. the trace amounts used for mortar. Requires dedicated Wadi Natrun supply chain commitment from Stage 4 onward.
 
-Note: Alabaster and Gold are referenced in the existing DESIGN.md resource model and should be added to the ResourceType enum.
+Note: Alabaster and Gold are referenced in the existing DESIGN.md resource model and should be added to the ResourceType enum. CrushedAggregate and casting-scale Natron should be added when hybrid casting is implemented.
+
+### Pounding Pit and Hybrid Casting Workforce
+
+The pounding pit introduces a new workforce tier that sits below all existing labor categories. It is the game's simplest operation and the first to use animal labor as a primary production method.
+
+| Role | Workers/Animals | Skill Level | Stage Available | Seasonal Pattern |
+|---|---|---|---|---|
+| **Pounding pit operators** | 50-200 workers OR 20-80 donkeys/oxen | Unskilled / animal | Stage 3 (discovery) | Year-round. Stockpile aggregate during dry months. |
+| **Aggregate screeners** | 20-50 workers | Unskilled | Stage 3 (discovery) | Year-round. Screen pounded rubble through reed baskets for size grading. |
+| **Basket carriers (casting)** | 500-2,000 workers | Unskilled | Stage 4 (scale-up) | Akhet only. Idle farmers carry slurry to pour points. |
+| **Mixers** | 100-400 workers | Semi-skilled | Stage 4 (scale-up) | Akhet primarily. Manage ratios, binder prep, mix consistency. 1-2 weeks training. |
+| **Casting supervisors** | 20-50 workers | Skilled | Stage 4 (scale-up) | Akhet primarily. Mold geometry, cure monitoring, quality control. Drawn from existing mason pool. |
+
+At Stage 5 (Giza) with a 25% casting fraction under the D+E blend, the hybrid casting workforce adds roughly 1,500-3,000 workers to the base Theory E workforce during flood season, plus year-round pounding pit operations (which can be largely animal-powered). The pounding pit's animal labor is significant: donkeys or oxen driving grinding stones in circular pits, the same principle as contemporary grain milling. This means aggregate production scales without competing for the human labor needed in higher-skill roles.
 
 ### Quarrying Methods and Tool Alternatives
 

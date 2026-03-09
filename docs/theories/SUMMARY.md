@@ -1,6 +1,6 @@
 # Construction Theories: Comparative Summary
 
-Quick-reference synthesis of the five deep dives. Individual files have the detail; this is for side-by-side comparison and design decisions.
+Quick-reference synthesis of the five theory deep dives plus the hybrid casting composable technique. Individual files have the detail; this is for side-by-side comparison and design decisions.
 
 ---
 
@@ -15,6 +15,20 @@ Quick-reference synthesis of the five deep dives. Individual files have the deta
 | **Scaling behavior** | Degrades sharply. Ramp volume grows cubically with height; past ~60m ramp dominates project. | Improves. Internal ramp corridor stays constant cross-section; shorter revolutions at height. | Mixed. Lock cycle time is fixed per chamber; throughput hits hard ceiling regardless of workforce. | Degrades linearly. Carry distance increases with height but offset by fewer blocks per course. | Favorable. Ramps widen where volume is greatest; narrow where volume is least. |
 | **Critical bottleneck** | Ramp-vs-pyramid resource competition (labor, water, wood, management bandwidth) | Skilled labor pipeline (masons who can build corridor, corner-notch crews) | Water supply and shaft integrity (single point of failure) | Natron supply from Wadi Natrun (100km donkey caravan, ~470 loads/day) | Downstream absorption rate (carve-down output must match next structure's build-up intake) |
 | **Unique mechanic** | Dual competing supply chains (pyramid + ramp) that invert over time | Two-phase system with workforce skill transition; Grand Gallery counterweight | Front-loaded infrastructure; seasonal burst operations; dual supply chain (stone + water) | Process engineering (recipe tuning, curing schedules); basket carriers replace sledge teams | Bidirectional material flow; structures as both consumer and producer; cascading DAG across complex |
+
+### Hybrid Casting -- Composable Technique (not a standalone theory)
+
+Hybrid casting is not Theory F. It is a **composable technique** that layers onto any quarry-based theory (A, B, C, or E). It converts quarry waste -- the ~30% of extracted limestone that becomes dust, chips, and rubble during cutting and dressing -- into cast-in-place blocks using a geopolymer reaction (natron + kaolinite clay + water + crushed limestone aggregate). See `hybrid-casting.md` for the full treatment.
+
+| Parameter | Hybrid Casting (composable) |
+|---|---|
+| **What it replaces** | A fraction (0-35%) of quarried blocks, player-controlled via a casting fraction slider |
+| **Peak additional workforce** | Pounding pit crew (unskilled/animal), seasonal basket carriers, semi-skilled mixers. Adds 1,000-4,000 workers to the base theory's workforce depending on casting fraction |
+| **Peak additional resource demand** | Natron (~8-10 tons/day at 25% casting fraction), water (flood-season dependent), pounding pit infrastructure |
+| **Seasonal dependency** | High. Casting is best during Akhet: flood delivers water to the plateau, idle farmers provide basket-carrier labor, aggregate stockpiled during dry months is consumed |
+| **Critical bottleneck** | Natron supply from Wadi Natrun (100km donkey caravan, ~140 loads/day at 25% fraction -- substantial but not the ~470/day that full Theory D requires) |
+| **Unique mechanic** | Casting fraction slider (strategic trade-off), pounding pit operations (lowest-skill work in the game, animal-powered), quality propagation through the cascade DAG |
+| **Best composition** | Theory E (accretion overbuild). Overbuild mass is the ideal casting candidate -- interior, temporary, high-volume, at the working face. Cast overbuild is cheaper to build up and easier to carve down |
 
 ---
 
@@ -71,6 +85,19 @@ Quarry ──→ Great Pyramid trapezoid (build-up) ──→ Carve-down output 
 
 Topology: directed acyclic graph across the entire complex. Each structure is a node with two phases (consumer during build-up, producer during carve-down). Material flows bidirectionally on each structure (up during build-up, down during carve-down) and unidirectionally between structures. The quarry supplements, not dominates, the inter-structure flow for downstream nodes.
 
+### Hybrid Casting Layer (composable onto any quarry-based topology)
+
+```
+                                        ┌──→ Pounding pit ──→ Graded aggregate ──┐
+Quarry waste (dust, chips, rubble) ─────┤                                         ├──→ Mixing station ──→ Pour point
+                                        └──→ Direct fine dust ───────────────────┘          ↑
+Wadi Natrun ──→ Natron ─────────────────────────────────────────────────────────────────────┤
+Nile floodplain ──→ Kaolinite clay ─────────────────────────────────────────────────────────┤
+Nile ──→ Water (flood season) ──────────────────────────────────────────────────────────────┘
+```
+
+Topology: a secondary convergent DAG that taps the quarry waste stream of the base theory. The pounding pit is a buffer/processing node that decouples waste generation (year-round) from casting consumption (flood season). When composed with Theory E, the mixing station sits on the overbuild working face -- slurry carry distance is minimal because you are casting blocks exactly where they are needed.
+
 ---
 
 ## 3. Gameplay Differentiation
@@ -105,6 +132,14 @@ Topology: directed acyclic graph across the entire complex. Each structure is a 
 
 **Feels like**: Factorio's production chains, where output from one factory feeds the next. The satisfaction of the carve-down reveal -- watching the smooth pyramid emerge from the rough trapezoid -- is the payoff for years of unglamorous bulk hauling.
 
+### D+E Blend -- "The Ultimate System"
+
+**Core puzzle**: Theory E provides the construction geometry (overbuild trapezoid, integrated ramps, cascade DAG). Hybrid casting provides the material efficiency (cast the overbuild from quarry waste instead of hauling every block as a 2.5-ton monolith). The player controls the casting fraction slider (0-35%), balancing cost savings against quality trade-offs that propagate through the entire cascade DAG.
+
+The strategic depth comes from quality propagation: cheap cast overbuild at Khufu is easy to build and easy to carve, but when that carved material cascades to Khafre, it arrives as lower-quality reconstituted limestone. The player can recast it (easier than recasting quarried stone -- already disaggregated), but each recasting generation degrades slightly. A player who cranks the casting slider to 35% at Khufu builds fast and cheap, but constrains their options at Khafre and Menkaure. A player who keeps casting at 15% pays more for the Great Pyramid but sends premium material downstream. This is the game's deepest long-range strategic trade-off.
+
+**Feels like**: Theory E's Factorio pipeline, but now each factory node has a quality dial. Turning it toward "cheap" makes your current factory easier but degrades the input stream for every downstream factory. The player who thinks one pyramid ahead wins.
+
 ---
 
 ## 4. Resource Overlap and Divergence
@@ -136,18 +171,21 @@ Topology: directed acyclic graph across the entire complex. Each structure is a 
 | **Wooden forms/molds** | D | 340-680 active form sets, continuously cycled. Form wear is a unique resource drain. |
 | **Overbuild stone** (pre-processed blocks from upstream structure) | E | The cascading material. Not a raw resource -- it is generated by the carve-down phase. |
 | **Survey instruments** (plumb bobs, sighting rods, string lines) | E | Precision carve-down requires survey reference systems not needed by bulk-build theories. |
+| **Natron** (partial) | Hybrid casting | Alkali activator, same as D but at reduced scale (~8-10 tons/day at 25% casting fraction vs. ~33 tons/day for full D). Wadi Natrun supply chain required. |
+| **Crushed aggregate** (from pounding pit) | Hybrid casting | Processed quarry waste. Pounding pit reduces rubble to graded aggregate (60% coarse / 40% fine). Lowest-skill operation; can use animal labor. |
+| **Pounding pit labor** (unskilled/animal) | Hybrid casting | Donkeys or oxen driving grinding stones in circular pits. Year-round operation, stockpiling aggregate for flood-season casting. |
 
 ### Resource Pressure Map
 
 ```
-                 A     B     C     D     E
-Copper tools:    +++   ++    ++    +     +++  (E has double use: build-up + carve-down)
-Wood:            +++   ++    +++   ++    ++   (C needs gates; A needs cross-timbers)
-Water:           ++    +     +++++  +    ++   (C is in a different league)
-Unskilled labor: +++++ +++   +++   ++    ++++ (A and E need the most bodies)
-Skilled labor:   ++    +++++ ++    +++   ++++ (B's corridor masons; E's survey masons)
-Rope:            +++++ +++   ++    +     ++++ (D barely uses rope)
-Natron:          -     -     -     +++++ -    (D only)
+                 A     B     C     D     E     E+Hybrid
+Copper tools:    +++   ++    ++    +     +++   ++    (casting fraction reduces cutting)
+Wood:            +++   ++    +++   ++    ++    ++    (tension molds, not timber formwork)
+Water:           ++    +     +++++  +    ++    +++   (casting needs flood-season water)
+Unskilled labor: +++++ +++   +++   ++    ++++ +++++ (pounding pit + basket carriers)
+Skilled labor:   ++    +++++ ++    +++   ++++ +++   (mixers are semi-skilled, not master masons)
+Rope:            +++++ +++   ++    +     ++++ +++   (less sledge hauling for cast blocks)
+Natron:          -     -     -     +++++ -    +++   (scaled to casting fraction)
 ```
 
 ---
@@ -160,9 +198,9 @@ Based on PROGRESSION.md's five career stages and the narrative arc of "replaying
 |---|---|---|
 | **Stage 1: Foreman** (Mastabas) | Pre-theory baseline | No theory needed. Manual hauling. Teaches resource triangle. The control case. |
 | **Stage 2: Overseer** (Step Pyramid) | Proto-Theory E (accretion layers) | Step pyramid = stacked mastabas with inward-leaning accretion layers. Ramps become part of the structure. Plants the seed of the overbuild concept without naming it. Introduces vertical logistics. |
-| **Stage 3: Governor** (Meidum + Bent Pyramid) | **Theory A** (External Ramp) | The Bent Pyramid is the canonical external-ramp scenario. The player builds an external ramp at 54 degrees, hits the scaling wall, and must hotfix mid-build. This is where Theory A proves its limits -- the ramp gets absurdly large. The Meidum collapse teaches that retrofitting doesn't work. Failure is the lesson. |
-| **Stage 4: Vizier** (Red Pyramid + Giza prep) | **Theory B** or **Theory C** (player's choice) | After external ramps fail at the Bent Pyramid, the player needs a new approach. Theory B (internal spiral) and Theory C (hydraulic) both become available as responses to the scaling problem. The Red Pyramid is the proving ground. Theory D (geopolymer) could also be offered here as an experimental path. This is the "choose your tech stack" moment. |
-| **Stage 5: Pharaoh** (Giza Complex) | **Theory E** (Accretion Overbuild) -- canonical path | The full complex demands multi-structure coordination. Theory E is the natural synthesis: it solves the ramp disposal problem (A's weakness), provides integrated vertical transport (no corridor constraints like B), doesn't depend on a single infrastructure (C's fragility), and uses standard construction methods (not D's speculative chemistry). The cascading DAG creates the multi-site gameplay that only Stage 5 can support. All other theories remain playable for alternative runs. |
+| **Stage 3: Governor** (Meidum + Bent Pyramid) | **Theory A** (External Ramp) + **Hybrid casting discovery** | The Bent Pyramid is the canonical external-ramp scenario. Theory A proves its limits. After the Bent Pyramid crisis, the hybrid casting discovery event fires: workers notice hardened dust after the flood. The player can invest in investigating, leading to a small-scale casting experiment. This is a composable technique discovery, not a theory switch. |
+| **Stage 4: Vizier** (Red Pyramid + Giza prep) | **Theory B** or **Theory C** (player's choice) + **Hybrid casting available** | After external ramps fail at the Bent Pyramid, the player needs a new approach. Theory B, C, or D become available. Hybrid casting is now a proven technique: the player can allocate a fraction of blocks to casting with any quarry-based theory. The Red Pyramid's generous mass (especially under Theory E geometry) is ideal for testing hybrid casting at scale. |
+| **Stage 5: Pharaoh** (Giza Complex) | **Theory E** (Accretion Overbuild) + **D+E blend** -- canonical path | The full complex demands multi-structure coordination. Theory E provides the construction geometry; hybrid casting provides material efficiency. The D+E blend is the game's ultimate construction method: quarried stone for permanent core/casing, cast stone for overbuild mass, cascade flows increasingly process-ready material downstream. The casting fraction slider, pounding pit operations, and quality propagation through the cascade DAG create the deepest strategic layer. All other theories remain playable for alternative runs. |
 
 ### Why This Ordering Works
 
@@ -176,9 +214,53 @@ The progression follows the historical logic of Egyptian engineering:
 
 Theory D (geopolymer) doesn't map to a specific historical site. It fits best as an alternative path available from Stage 3 onward -- the "what if?" route for players who want a radically different experience. Its low workforce requirement and process-engineering gameplay offer a contrast to the hauling-army default.
 
+Hybrid casting emerges organically at Stage 3 via the flood discovery mechanism. It is not a theory choice -- it is a composable technique that the player discovers and can adopt incrementally. The discovery is tied to the Bent Pyramid crisis: after the angle change, the next flood season reveals hardened waste at the quarry. The player who investigates unlocks small-scale casting experiments. By Stage 4, it is proven and available as a strategic option. By Stage 5, it composes with Theory E to form the game's ultimate construction method.
+
 ---
 
-## 6. Cross-Theory Insights
+## 6. Theory Blending: Composable Techniques
+
+### The Composability Principle
+
+Theories A through E are **construction geometries** -- they define how material moves through space and how the structure grows. Hybrid casting is a **material formation technique** -- it defines how some of that material is made. These are orthogonal concerns, which is why hybrid casting composes with any quarry-based theory rather than competing with them.
+
+| Base Theory | Hybrid Casting Composition | Quality of Fit |
+|---|---|---|
+| A: External Ramp | Cast ramp fill from quarry waste instead of hauling rubble. Reduces ramp material logistics. | Moderate -- ramp fill is low-quality anyway, so casting waste into fill is efficient but not transformative. |
+| B: Internal Spiral | Cast upper-course blocks from waste hauled in baskets through the corridor. Reduces the weight problem at height. | Moderate -- the corridor is still the bottleneck, but lighter basket loads are easier than 2.5-ton blocks at 100m+. |
+| C: Hydraulic Lift | Cast blocks at height from aggregate delivered by the hydraulic system. Aggregate in baskets floats as easily as blocks. | Weak to moderate -- the hydraulic system already solves the vertical transport problem; casting adds complexity without solving C's core issue (water dependency). |
+| **E: Accretion Overbuild** | **Cast overbuild mass from quarry waste. The overbuild is interior, temporary, high-volume, and at the working face -- the ideal casting candidate.** | **Excellent -- this is the game's ultimate construction method. See below.** |
+
+### The D+E Blend in Detail
+
+The D+E blend is the synthesis of Theory E's construction geometry with hybrid casting's material efficiency. It is the canonical endgame method for players on the Theory E path.
+
+**What Theory E provides:**
+- Overbuild trapezoid geometry (integrated ramps, working platforms)
+- The cascade DAG (material flows between structures)
+- The carve-down reveal (overbuild removed top-down)
+- Bidirectional material flow (up during build-up, down during carve-down)
+
+**What hybrid casting provides:**
+- A use for the ~30% quarry waste stream (dust, chips, rubble)
+- Cast blocks for the overbuild mass (cheaper, faster than hauling quarried blocks)
+- Pounding pit operations (lowest-skill work, animal-powered, year-round stockpiling)
+- 4-tier workforce stratification (pounding pit / basket carriers / mixers / skilled masons)
+- Seasonal rhythm: pound aggregate in dry months, cast during flood when water is abundant
+
+**The combined system:**
+1. Quarried blocks form the permanent core and precision casing elements
+2. Cast blocks from quarry waste form a player-controlled fraction (0-35%) of the overbuild mass
+3. The overbuild serves as integrated ramps during build-up
+4. Carve-down of the overbuild produces both reusable quarried blocks and re-castable aggregate for the downstream structure
+5. The casting fraction can increase naturally through the cascade as material becomes more process-ready with each generation
+6. Quality propagation: cheap choices at Khufu constrain quality options at Khafre and Menkaure
+
+**The casting fraction slider** is the player's primary strategic control. At 0%, the D+E blend reduces to pure Theory E. At 35%, nearly all overbuild is cast from waste, dramatically reducing hauling but creating natron dependency and sending lower-quality cascade material downstream. The optimal setting depends on the player's long-range plan for the entire Giza complex.
+
+---
+
+## 7. Cross-Theory Insights
 
 Things multiple deep dives agree on, regardless of which theory you believe.
 
