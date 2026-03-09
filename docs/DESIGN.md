@@ -25,38 +25,70 @@ A browser-based economy tycoon where you build pyramids by designing and debuggi
 
 Ripped from Pharaoh's tribal-leader-to-pharaoh arc, but reframed: each stage is a new scope of responsibility. You don't abandon lower levels — you automate them.
 
-#### Stage 1: Foreman (Tutorial / "Hello World")
+**The historical through-line**: The player's career replays the actual R&D arc of Egyptian pyramid building, from mastabas through the Great Pyramid. Each historical site naturally pairs with a construction theory, and historical failures (Meidum's collapse, the Bent Pyramid's mid-course correction) are gameplay events, not cutscenes. The player doesn't read about why Theory E matters — they experience the failures that made it necessary.
+
+#### Stage 1: Foreman — Mastabas (Tutorial / "Hello World")
+- **Historical site**: Early dynastic mastabas — flat-topped rectangular tombs of mud brick and rubble
 - **Scope**: One work site, one resource
-- **Gameplay**: Manual worker assignment. You drag people to tasks. You feel every bottleneck in your bones.
+- **Gameplay**: Manual worker assignment. You drag people to tasks. You feel every bottleneck in your bones. Mastabas are simple: stack mud bricks into a flat-topped rectangle. No angles, no precision cutting.
+- **Construction theory**: Basic manual hauling — levers, sledges, human muscle (pre-Theory). This is the baseline everything else is measured against.
 - **Contract**: "Deliver 100 mud bricks to the construction site" — a one-off to learn the ropes
 - **What you learn**: Basic resource flow, worker needs (food, water, rest), seasonal Nile cycle
 - **Automation unlock**: Task assignment queues — workers follow standing orders instead of individual commands
+- **Historical note**: Mastabas were the standard elite tomb for centuries. Simple, proven, boring. The player should feel the ceiling — "I've mastered this, what's next?"
 
-#### Stage 2: Overseer
+#### Stage 2: Overseer — Step Pyramid at Saqqara (Djoser/Imhotep)
+- **Historical site**: Saqqara necropolis, ~2670 BCE. Imhotep's revolutionary idea: stack mastabas on top of each other, each smaller than the last
 - **Scope**: Multiple work sites, supply chain between them
-- **Gameplay**: You stop moving individual workers. You define routes, ratios, priorities. You're writing policies.
-- **Contract**: "Sustain 200 limestone blocks/season to the plateau for 3 flood cycles"
-- **What you learn**: Transport logistics, Nile as infrastructure, stockpile management, seasonal planning
+- **Gameplay**: You stop moving individual workers. You define routes, ratios, priorities. You're writing policies. The step pyramid introduces **vertical logistics** for the first time — getting stone UP, not just across. Each "step" is essentially a mastaba you already know how to build, but stacking them requires supply chain coordination between the quarry floor, the staging area, and multiple rising work faces.
+- **Construction theory**: Stacked mastabas with accretion layers — the first vertical logistics problem. Levers and sledges still, but now with ramps to gain height.
+- **Contract**: "Sustain 200 limestone blocks/season to the Saqqara plateau for 3 flood cycles. Maintain supply to all 6 step levels simultaneously."
+- **What you learn**: Transport logistics, Nile as infrastructure, stockpile management, seasonal planning, and the new problem of VERTICAL transport
 - **Automation unlock**: Route automation, stockpile thresholds that trigger production changes
+- **Historical note**: Imhotep started with a mastaba and kept revising upward — the step pyramid went through at least 6 design changes during construction. The player should feel that iterative energy.
 
-#### Stage 3: Governor
+#### Stage 3: Governor — Sneferu's Failures (Meidum & Bent Pyramid)
+- **Historical site**: Meidum, then Dahshur. Pharaoh Sneferu's ambitious and troubled experiments, ~2600 BCE
 - **Scope**: A region with multiple cities, quarries, and the Nile transport network
-- **Gameplay**: City-level management. Each city is a node in your network. You allocate between them.
-- **Contract**: "Supply Giza with limestone from Tura AND granite from Aswan. Maintain worker satisfaction above 60% across all sites. Sustain for 5 flood cycles."
-- **What you learn**: Multi-node logistics, competing resource demands, labor economics, trade
+- **Gameplay**: This stage is split into two acts, both under Sneferu, and **both involve dramatic failure as gameplay**:
+
+  **Act 1 — Meidum Pyramid** ("Production Incident #1"):
+  - Sneferu attempts to convert a step pyramid into a true smooth-sided pyramid by filling in the steps with casing stone
+  - The player builds supply chains for this ambitious retrofit, coordinating multiple quarry sites
+  - **The collapse**: Partway through, the outer casing partially collapses. The fill material wasn't bonded to the core steps. This isn't a game-over — it's a **production incident**. The player must diagnose what went wrong, salvage what they can, and manage the political/economic fallout.
+  - **Construction theory tested**: Lever/cradle theory (Theory-adjacent). The focus on lifting heavy casing blocks reveals the limits of brute-force vertical transport.
+  - **What the player learns**: Retrofitting a system not designed for your new requirements is dangerous. Sometimes you need to start over.
+
+  **Act 2 — Bent Pyramid at Dahshur** ("Hotfix in Production"):
+  - Sneferu starts fresh with a true pyramid from the ground up, at a steep 54-degree angle
+  - The player builds an external ramp system (Theory A) to haul blocks up the steep face
+  - **The hotfix**: Midway up, cracks appear. The angle is too steep; the structure is failing under its own weight. The player must change the angle to ~43 degrees MID-BUILD. This means redesigning supply routes, adjusting block dimensions, retraining workers — all while the pyramid is half-finished.
+  - **Construction theory tested**: External ramp (Theory A). The steep angle exposes the theory's scaling limits — the ramp becomes impossibly large relative to the pyramid.
+  - **What the player learns**: External ramps work, but they don't scale. The theory hits a wall. There must be a better way.
+
+- **Contract**: "Supply Dahshur with limestone from Tura AND granite from Aswan. Maintain worker satisfaction above 60% across all sites. Survive both incidents and deliver Sneferu a completed pyramid. Sustain for 5 flood cycles."
+- **What you learn**: Multi-node logistics, competing resource demands, labor economics, trade — and that **failure is data, not defeat**
 - **Automation unlock**: Governor policies — cities run themselves according to rules you set, you intervene when things break
 
-#### Stage 4: Vizier
+#### Stage 4: Vizier — Red Pyramid & the Path to Giza (Sneferu → Khufu)
+- **Historical site**: Red Pyramid at Dahshur (~2590 BCE), then preparation for the Great Pyramid at Giza
 - **Scope**: Kingdom-wide. Multiple mega-projects. Diplomatic/economic considerations.
-- **Gameplay**: You're choosing WHICH pyramid theory to pursue, allocating the kingdom's resources across competing priorities. Individual blocks are a rounding error.
-- **Contract**: "Complete the Great Pyramid using [chosen theory]. Maintain kingdom stability. You have 20 years."
-- **What you learn**: Strategic resource allocation, long-term planning, theory trade-offs
+- **Gameplay**: Sneferu's third attempt. The player applies lessons from Meidum and the Bent Pyramid. The Red Pyramid uses a conservative 43-degree angle and succeeds — Egypt's first true smooth-sided pyramid.
+  - The player must choose their approach: Internal spiral ramp (Theory B) or hydraulic systems (Theory C) become viable options here, promising to solve the scaling problems that external ramps couldn't.
+  - **The transition**: After the Red Pyramid succeeds, Khufu takes the throne. He wants something unprecedented. The player is tasked with planning the Great Pyramid — but at this scale, even Theory B and C have limits. This is where Theory E (accretion overbuild) emerges as a response to everything that came before.
+  - **The key moment**: The player realizes that building at Giza scale requires a paradigm shift. Not just a better ramp or a bigger canal — a completely different relationship between structures, where the overbuild of each pyramid becomes the raw material for the next.
+- **Contract**: "Complete the Red Pyramid. Then plan the Giza complex using your chosen theory. Maintain kingdom stability. You have 20 years."
+- **What you learn**: Strategic resource allocation, long-term planning, theory trade-offs. Why Theory E isn't just another option — it's the synthesis of every failure and lesson.
 - **Automation unlock**: Regional governance — appoint governors (AI or player-defined policy sets) to manage regions
 
-#### Stage 5: Pharaoh (Endgame / Sandbox)
+#### Stage 5: Pharaoh — The Giza Complex (Khufu/Khafre/Menkaure)
+- **Historical site**: The Giza Plateau, ~2560 BCE. The Great Pyramid, Khafre's pyramid, Menkaure's pyramid, the Sphinx, temples, causeways — the entire complex as one interconnected system.
 - **Scope**: Dynastic. Multiple pyramids, temples, the entire kingdom over generations.
-- **Gameplay**: Legacy planning. Your systems outlive individual workers, governors, even you. Design for resilience.
-- **Contract**: Open-ended. Build your legacy. The Nile doesn't care about your plans.
+- **Gameplay**: The culmination. If the player has adopted Theory E, the Giza complex becomes a cascading DAG: the Great Pyramid's overbuild carve-down produces Khafre's building material, Khafre's produces Menkaure's, Menkaure's produces the temples and causeways. Every structure is both consumer and producer. The full complex is one integrated supply web.
+  - Legacy planning. Your systems outlive individual workers, governors, even you. Design for resilience.
+  - All theories remain playable here — Theory E is the canonical path, but players who mastered external ramps, internal ramps, or hydraulics can attempt Giza their way.
+- **Contract**: Open-ended. Build the complex. Outlast yourself. The Nile doesn't care about your plans.
+- **Historical note**: The Giza complex was built across three pharaohs' reigns. The player's system must survive leadership transitions, workforce turnover, and generational drift.
 
 ---
 
@@ -107,34 +139,43 @@ The Nile is the central infrastructure of the game. It's not a decoration — it
 Each theory is a fundamentally different architecture. Choosing one reshapes your entire logistics problem.
 
 #### Theory A: External Ramp
+- **Historical pyramid**: Bent Pyramid at Dahshur (Stage 3, Act 2). The player encounters this theory during Sneferu's second attempt and experiences its scaling limits firsthand when the steep angle forces a mid-build course correction.
 - **Concept**: A massive straight or wrap-around ramp of earth/rubble, raised as the pyramid grows
 - **Supply chain**: Enormous quantities of fill material (almost as much as the pyramid itself), plus the actual building stone
 - **Labor**: Brute force. Huge workforce needed.
-- **Bottleneck**: Material volume. You're building two structures — the pyramid and the ramp.
+- **Bottleneck**: Material volume. You're building two structures — the pyramid and the ramp. At steep angles, the ramp grows faster than the pyramid.
 - **Player archetype**: The brute-force optimizer. Parallelize everything.
+- **Career arc**: Works fine for modest pyramids; the Bent Pyramid reveals its ceiling. Players who love this approach can still use it at Giza, but they'll need to solve the scaling problem themselves.
 
 #### Theory B: Internal Spiral Ramp (Houdin)
+- **Historical pyramid**: Unlocks at the Red Pyramid (Stage 4). After the external ramp's failure at the Bent Pyramid, the internal ramp presents itself as an elegant alternative — solve the ramp problem by hiding the ramp inside the structure itself.
 - **Concept**: A ramp built inside the pyramid structure itself, spiraling upward
 - **Supply chain**: Less fill material, but requires precise engineering and skilled labor
 - **Labor**: Smaller but more skilled workforce. Mistakes are costlier.
 - **Bottleneck**: Skilled worker supply. Training pipeline matters.
 - **Player archetype**: The elegant architect. Fewer resources, more planning.
+- **Career arc**: A direct response to Theory A's scaling problem. Players who choose this path trade brute force for precision, which creates different failure modes at Giza scale (skilled labor shortages instead of material bottlenecks).
 
 #### Theory C: Water Shaft / Hydraulic
+- **Historical pyramid**: Also unlocks at the Red Pyramid (Stage 4). The Nile's seasonal floods, which the player has been managing since the tutorial, become the core of a construction method. The infrastructure investment pays off IF you can sustain water supply year-round.
 - **Concept**: Using water channels and locks to float blocks upward
 - **Supply chain**: Massive water infrastructure investment. Canal construction.
 - **Labor**: Engineering-heavy. Canal builders, lock operators.
-- **Bottleneck**: Water supply (Nile-dependent), canal maintenance. Seasonal.
+- **Bottleneck**: Water supply (Nile-dependent), canal maintenance. Seasonal — a drought year can shut down your entire vertical transport.
 - **Player archetype**: The infrastructure builder. Front-load investment, reap efficiency.
+- **Career arc**: The player has been fighting the Nile's seasonality since Stage 1. This theory leans INTO that relationship instead of fighting it. But it makes you utterly dependent on the river — a high-variance bet.
 
 #### Theory D: Geopolymer (Cast-in-Place)
+- **Historical pyramid**: No single historical site — this is the "what if?" theory. Available as an alternative approach from Stage 3 onward. Historically speculative (Davidovits, 1980s), but makes for excellent gameplay as a radically different supply chain.
 - **Concept**: Blocks aren't quarried — they're cast from a limestone aggregate mixture on-site
-- **Supply chain**: Completely different. Raw aggregate,iteiteite binder, water, molds. Chemistry, not quarrying.
+- **Supply chain**: Completely different. Raw aggregate,ite binder, water, molds. Chemistry, not quarrying.
 - **Labor**: Skilled chemists/mixers instead of quarry workers. Different specialization tree.
 - **Bottleneck**: Recipe consistency, mold production, curing time.
 - **Player archetype**: The process engineer. Optimize the recipe and the pipeline.
 
 #### Theory E: Accretion Overbuild (THE GAME'S PREFERRED THEORY)
+- **Historical pyramid**: The Great Pyramid at Giza and the entire Giza complex (Stage 5). Theory E doesn't just unlock at a historical site — it EMERGES from the player's accumulated experience of failure. Meidum collapsed because the casing wasn't bonded to the core. The Bent Pyramid proved that brute-force angles don't scale. The Red Pyramid showed that conservative geometry works. Theory E synthesizes all of this: build big, build structural, and make the excess material USEFUL.
+- **Why it emerges at Giza**: The player has tried ramps that don't scale, angles that crack, and retrofits that collapse. Theory E is the "what if we just built bigger than we need and carved down?" insight — turning the overbuild from a problem (wasted material) into the solution (building material for the next structure).
 - **Concept**: Build each pyramid as a massive stepped trapezoid significantly larger than the final form, with ramps integrated directly into the overbuild mass. Then carve down to the final smooth faces. The removed material cascades to become the building material for the next structure in the complex.
 - **The key insight**: The Great Pyramid's overbuild mass ≈ Khafre's pyramid + overbuild. Khafre's overbuild ≈ Menkaure + overbuild. Menkaure's overbuild ≈ temples, causeways, enclosure walls. Total quarried material = total complex mass. No waste, no mystery surplus.
 - **Why this is the game's preferred theory**: It transforms the Giza complex from isolated hub-and-spoke projects into a **supply web / DAG**. Every structure is both consumer and producer. The pyramid IS the stockpile for the next project.
@@ -152,6 +193,8 @@ Each theory is a fundamentally different architecture. Choosing one reshapes you
   - The player's overbuild decisions propagate through the entire complex DAG
 
 **Design goal**: Each theory should feel like a legitimately different game to play, not just reskinned numbers. The supply chains, labor requirements, failure modes, and optimization strategies should be distinct. Theory E is the game's canonical approach and should receive the deepest implementation, with other theories available as alternative playstyles.
+
+**Historical progression design goal**: The player should feel like they're living through the actual R&D of pyramid construction. Theories aren't unlocked from a tech tree — they emerge from historical context. The player tries external ramps at the Bent Pyramid and watches them fail. They try conservative angles at the Red Pyramid and succeed but feel constrained. By the time Theory E presents itself at Giza, the player WANTS it because they've personally experienced every limitation it solves. The innovation feels earned, not given.
 
 ---
 
