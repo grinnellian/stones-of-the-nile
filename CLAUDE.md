@@ -11,7 +11,7 @@ See `docs/DESIGN.md` for the full design document.
 ## Tech Stack
 
 - TypeScript, Vite, Vitest
-- Phaser 3 for rendering (2D isometric)
+- Three.js for 3D rendering (instanced blocks — pyramids are cheap geometry)
 - All client-side, no backend
 
 ## Commands
@@ -29,7 +29,7 @@ npm run lint         # ESLint
 The game separates simulation from rendering:
 
 - `src/simulation/` — Pure logic: economy engine, resource model, seasonal ticks, contract evaluation. No rendering dependencies. Testable in isolation.
-- `src/rendering/` — Phaser scenes, sprites, UI. Consumes simulation state.
+- `src/rendering/` — Three.js scenes, instanced block meshes, camera, UI overlay. Consumes simulation state.
 - `src/types/` — Shared type definitions
 - `src/data/` — Static game data (resource definitions, building costs, theory parameters)
 

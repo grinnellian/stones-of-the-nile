@@ -6,6 +6,7 @@ import { Season, TICKS_PER_SEASON } from './types/calendar.js';
 import { loadTransport } from './simulation/transport.js';
 import { getSeasonModifiers } from './simulation/calendar.js';
 import { createForemanScenario } from './data/scenarios.js';
+import { PyramidView } from './rendering/pyramid-view.js';
 
 // --- Game State ---
 const config = createForemanScenario();
@@ -13,6 +14,10 @@ let state = createGameState(config);
 let running = false;
 let speed = 1; // ticks per frame
 let tickCount = 0;
+
+// --- 3D Pyramid View ---
+let pyramidView: PyramidView | null = null;
+let show3D = false;
 const log: string[] = [];
 
 function addLog(msg: string, cls: string = '') {
@@ -128,7 +133,32 @@ function resetGame(): void {
   tickCount = 0;
   log.length = 0;
   addLog('Game reset. A new day on the Nile.', 'log-season');
+  if (pyramidView) {
+    pyramidView.setBlocksPlaced(0);
+  }
   render();
+}
+
+function toggle3D(): void {
+  show3D = !show3D;
+  const container = document.getElementById('pyramid-3d')!;
+  container.style.display = show3D ? 'block' : 'none';
+
+  if (show3D && !pyramidView) {
+    pyramidView = new PyramidView({
+      container,
+      layers: 20,
+      baseSize: 40,
+      blocksPlaced: getDressedStoneAtGiza(),
+    });
+  }
+  render();
+}
+
+/** Get total dressed stone delivered to construction site — drives 3D block count */
+function getDressedStoneAtGiza(): number {
+  const giza = state.sites.find((s) => s.id === 'giza-plateau');
+  return Math.floor(giza?.stockpile[ResourceType.DressedStone] ?? 0);
 }
 
 // --- Rendering ---
@@ -246,12 +276,18 @@ function render(): void {
     })
     .join('');
 
+  // Update 3D pyramid view with current block count
+  if (pyramidView && show3D) {
+    pyramidView.setBlocksPlaced(getDressedStoneAtGiza());
+  }
+
   app.innerHTML = `
     <div class="controls">
       <button onclick="window.__startGame()" ${running ? 'disabled' : ''}>Play</button>
       <button onclick="window.__stopGame()" ${!running ? 'disabled' : ''}>Pause</button>
       <button onclick="window.__tickOnce()" ${running ? 'disabled' : ''}>Step</button>
       <button class="danger" onclick="window.__resetGame()">Reset</button>
+      <button onclick="window.__toggle3D()" style="margin-left:auto">${show3D ? 'Hide' : 'Show'} 3D View</button>
       <span class="speed-label">Speed:</span>
       <button onclick="window.__setSpeed(1)" ${speed === 1 ? 'disabled' : ''}>1x</button>
       <button onclick="window.__setSpeed(3)" ${speed === 3 ? 'disabled' : ''}>3x</button>
@@ -298,6 +334,7 @@ function render(): void {
 (window as any).__tickOnce = gameTick;
 (window as any).__setSpeed = setSpeed;
 (window as any).__resetGame = resetGame;
+(window as any).__toggle3D = toggle3D;
 
 // Initial render
 addLog('Welcome, Foreman. The Vizier expects results.', 'log-season');

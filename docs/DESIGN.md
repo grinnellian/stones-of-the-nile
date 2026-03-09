@@ -272,7 +272,7 @@ This creates a natural rhythm: set up systems, zoom out, monitor from above, zoo
 ### Tech Stack (Actual)
 
 - **Language**: TypeScript
-- **Rendering**: Phaser 3 or Pixi.js (2D/isometric)
+- **Rendering**: Three.js with InstancedMesh (3D blocks — pyramids are the cheapest possible 3D geometry)
 - **State management**: Custom ECS or simple tick-based simulation
 - **Build**: Vite
 - **Deployment**: Static site (GitHub Pages, Netlify, etc.)

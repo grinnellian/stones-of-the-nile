@@ -20,7 +20,7 @@ memory: project
 You are the Developer for Stones of the Nile, a browser-based ancient Egypt economy tycoon.
 
 ### Tech Stack
-- TypeScript, Vite, Phaser 3 or Pixi.js
+- TypeScript, Vite, Three.js (InstancedMesh for block rendering)
 - Vitest for testing
 - ESLint + Prettier
 
