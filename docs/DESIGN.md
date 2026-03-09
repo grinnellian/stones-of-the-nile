@@ -229,6 +229,34 @@ This creates a natural rhythm: set up systems, zoom out, monitor from above, zoo
 
 ---
 
+### Worker Organization (Historical Basis)
+
+Based on Lehner's excavations at the Giza workers' village and the Merer papyri:
+
+- **Crews** (~2,000 men) — the largest unit. Named: "Friends of Khufu," "Drunkards of Menkaure"
+- **Phyles** (~200 men) — subdivisions of a crew
+- **Divisions** (~20 men) — the working unit you actually manage at Foreman level
+
+**Game implications**: At Foreman zoom, you manage divisions directly. At Overseer, you manage phyles. At Governor, crews. This mirrors the historical structure and creates natural automation boundaries.
+
+Workers are NOT slaves — they're paid laborers and seasonal corvée workers. Well-fed (bread, beer, meat, fish), with medical care. Satisfaction is a real mechanic, not just flavor.
+
+---
+
+### Historical Grounding Notes
+
+See `docs/RESEARCH.md` for full reference material.
+
+Key numbers that inform game balance:
+- Great Pyramid: ~2.3 million blocks, ~340 blocks/day over 20 years
+- Peak workforce: 20,000-30,000 (not Herodotus's exaggerated 100,000)
+- Tura casing stone: 13-17km by barge, 67,000-115,000 blocks
+- Aswan granite: 934km upstream, 25-80 ton blocks, flood season only
+- Merer's crew: ~40 men, multi-day round trips Tura↔Giza
+- Wetting sand reduces sledge friction ~50% (confirmed 2014, U Amsterdam)
+
+---
+
 ### Open Questions
 
 - **Multiplayer?** Probably not for v1, but the contract/leaderboard model (SpaceChem-style: "here's how your throughput compares to other players") could work well
@@ -236,4 +264,5 @@ This creates a natural rhythm: set up systems, zoom out, monitor from above, zoo
 - **Difficulty tuning**: How much variance in floods? How tight are contracts? Need playtesting.
 - **Art style**: Pharaoh's sprite art is beloved. Stylized 2D isometric? Pixel art? Minimalist/abstract? TBD.
 - **Name**: "Stones of the Nile" is a placeholder. Could be better.
-- **Scope for v0.1**: Just the economy sim with text output? Or basic visual from day 1?
+- **Bazaar walker mechanic?** Pharaoh's bazaar traders walking routes to distribute goods is iconic. Could adapt: scribes walking routes to distribute orders/automation?
+- **Housing evolution?** Pharaoh's multi-tier housing (needs more goods to upgrade) maps to worker satisfaction tiers
