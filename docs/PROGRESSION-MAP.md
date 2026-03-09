@@ -602,33 +602,33 @@ PHASE 3: KHAFRE CARVE-DOWN + MENKAURE + TEMPLES (Years 20-30+)
 
 ## Summary: Stage-by-Location Matrix
 
-| Location | S1 | S2 | S3 | S4 | S5 |
-|----------|----|----|----|----|-----|
-| `memphis` | active | active | active | active | active |
-| `saqqara` | active | **primary** | background | background | background |
-| `saqqara-workers-village` | active | active | background | background | background |
-| `tura-quarry` | visible | **active** | active | active | **critical** |
-| `buto` | -- | active | active | active | active |
-| `sais` | -- | active | active | active | active |
-| `bubastis` | -- | active | active | active | active |
-| `heliopolis` | -- | active | active | active | active |
-| `fayum-farms` | implied | active | **elevated** | active | active |
-| `aswan` | -- | active | active | active | **critical** |
-| `sinai-mines` | -- | active | active | active | **critical** |
-| `wadi-natrun` | -- | optional | active | active | active |
-| `fayum-basalt` | -- | optional | active | active | active |
-| `hatnub` | -- | -- | optional | active | active |
-| `hermopolis` | -- | -- | active | active | active |
-| `meidum` | -- | -- | **primary** | background | background |
-| `dahshur` | -- | -- | **primary** | **primary** | background |
-| `abydos` | -- | -- | -- | active | active |
-| `elephantine` | -- | -- | -- | active | active |
-| `delta-port` | -- | -- | -- | **active** | active |
-| `byblos` | -- | -- | -- | **active** | **critical** |
-| `giza-plateau` | -- | -- | -- | preparation | **PRIMARY** |
-| `giza-workers-village` | -- | -- | -- | building | **active** |
-| `abusir` | -- | -- | -- | visible | optional |
-| `wadi-al-jarf` | -- | -- | -- | active | active |
+| Location | S0 | S1 | S2 | S3 | S4 | S5 |
+|----------|----|----|----|----|----|----|
+| `memphis` | implied | active | active | active | active | active |
+| `saqqara` | -- | active | **primary** | background | background | background |
+| `saqqara-workers-village` | -- | active | active | background | background | background |
+| `tura-quarry` | -- | visible | **active** | active | active | **critical** |
+| `buto` | -- | -- | active | active | active | active |
+| `sais` | -- | -- | active | active | active | active |
+| `bubastis` | -- | -- | active | active | active | active |
+| `heliopolis` | -- | -- | active | active | active | active |
+| `fayum-farms` | -- | implied | active | **elevated** | active | active |
+| `aswan` | -- | -- | active | active | active | **critical** |
+| `sinai-mines` | -- | -- | active | active | active | **critical** |
+| `wadi-natrun` | -- | -- | optional | active | active | active |
+| `fayum-basalt` | -- | -- | optional | active | active | active |
+| `hatnub` | -- | -- | -- | optional | active | active |
+| `hermopolis` | -- | -- | -- | active | active | active |
+| `meidum` | -- | -- | -- | **primary** | background | background |
+| `dahshur` | -- | -- | -- | **primary** | **primary** | background |
+| `abydos` | -- | -- | -- | -- | active | active |
+| `elephantine` | -- | -- | -- | -- | active | active |
+| `delta-port` | -- | -- | -- | -- | **active** | active |
+| `byblos` | -- | -- | -- | -- | **active** | **critical** |
+| `giza-plateau` | -- | -- | -- | -- | preparation | **PRIMARY** |
+| `giza-workers-village` | -- | -- | -- | -- | building | **active** |
+| `abusir` | -- | -- | -- | -- | visible | optional |
+| `wadi-al-jarf` | -- | -- | -- | -- | active | active |
 
 **Legend**: `--` = not yet visible, `visible` = on map but not interactive, `optional` = available but not required, `active` = in play, `**primary**` = main construction focus, `**critical**` = essential supply node, `**PRIMARY**` = THE endgame site
 
@@ -636,39 +636,51 @@ PHASE 3: KHAFRE CARVE-DOWN + MENKAURE + TEMPLES (Years 20-30+)
 
 ## Summary: Stage-by-Route Matrix
 
-| Route | S1 | S2 | S3 | S4 | S5 |
-|-------|----|----|----|----|-----|
-| `nile-delta-to-memphis` | -- | active | active | active | **critical** |
-| `nile-tura-to-saqqara` | -- | **critical** | background | background | -- |
-| `nile-aswan-to-memphis` | -- | active | active | active | **critical** |
-| `nile-memphis-to-dahshur` | partial | -- | **critical** | **critical** | background |
-| `nile-memphis-to-meidum` | -- | -- | **critical** | background | -- |
-| `nile-tura-to-dahshur` | -- | -- | **critical** | **critical** | background |
-| `overland-memphis-to-sinai` | -- | active | active | active | **critical** |
-| `overland-memphis-to-wadi-natrun` | -- | optional | active | active | active |
-| `overland-fayum-basalt` | -- | optional | active | active | active |
-| `overland-memphis-to-hatnub` | -- | -- | optional | active | active |
-| `sea-delta-to-byblos` | -- | -- | -- | **active** | **critical** |
-| `nile-memphis-to-giza` | -- | -- | -- | preparation | **CRITICAL** |
-| `nile-tura-to-giza` | -- | -- | -- | preparation | **CRITICAL** |
-| `sea-wadi-jarf-to-sinai` | -- | -- | -- | active | active |
+| Route | S0 | S1 | S2 | S3 | S4 | S5 |
+|-------|----|----|----|----|----|----|
+| `nile-delta-to-memphis` | -- | -- | active | active | active | **critical** |
+| `nile-tura-to-saqqara` | -- | -- | **critical** | background | background | -- |
+| `nile-aswan-to-memphis` | -- | -- | active | active | active | **critical** |
+| `nile-memphis-to-dahshur` | -- | partial | -- | **critical** | **critical** | background |
+| `nile-memphis-to-meidum` | -- | -- | -- | **critical** | background | -- |
+| `nile-tura-to-meidum` | -- | -- | -- | **active** | -- | -- |
+| `nile-fayum-to-meidum` | -- | -- | -- | **active** | -- | -- |
+| `nile-meidum-to-dahshur` | -- | -- | -- | **active** | background | -- |
+| `nile-tura-to-dahshur` | -- | -- | -- | **critical** | **critical** | background |
+| `overland-memphis-to-sinai` | -- | -- | active | active | active | **critical** |
+| `overland-memphis-to-wadi-natrun` | -- | -- | optional | active | active | active |
+| `overland-fayum-basalt` | -- | -- | optional | active | active | active |
+| `overland-memphis-to-hatnub` | -- | -- | -- | optional | active | active |
+| `sea-delta-to-byblos` | -- | -- | -- | -- | **active** | **critical** |
+| `nile-memphis-to-giza` | -- | -- | -- | -- | preparation | **CRITICAL** |
+| `nile-tura-to-giza` | -- | -- | -- | -- | preparation | **CRITICAL** |
+| `sea-wadi-jarf-to-sinai` | -- | -- | -- | -- | active | active |
 
 ---
 
 ## Design Recommendations
 
-1. **Add missing routes**: `nile-tura-to-meidum` and `fayum-to-meidum` (overland or canal) to reflect geographic reality and avoid forcing all Meidum supply through Memphis.
+1. ~~**Add missing routes**~~ — **RESOLVED.** Committed to `world-map.ts`: `nile-tura-to-meidum` (3 ticks), `nile-fayum-to-meidum` (2 ticks), `nile-meidum-to-dahshur` (2 ticks). All three routes are now in the data.
 
-2. **Saqqara era adjustment**: Either add a `tutorial` sub-era or allow Saqqara to host mastaba construction before the Djoser era formally begins. The current `Era.Djoser` tag is too restrictive for Stage 1.
+2. **Pre-construction tutorial stages** — **REVISED (was: Saqqara era adjustment).** The mastaba should NOT be the first tutorial. Following the model of Pharaoh and Children of the Nile, several pre-dynastic tutorial levels should teach basic systems (resource gathering, Nile flood cycle, feeding workers, simple overland transport) before any monumental construction begins. The mastaba becomes the culmination of the tutorial arc or the start of Act 2 — the player's first real "build something" moment, earned after mastering fundamentals. This also resolves the original Saqqara era concern: tutorials are set in a generic village context near Memphis and do not require Saqqara access. See PROGRESSION.md Stage 0 (Tutorial) for the detailed tutorial stage design.
 
-3. **Elephantine nilometer**: Implement as an information-purchasing mechanic. The player invests in maintaining Elephantine's nilometer garrison and receives flood predictions 1-2 seasons early. This makes a passive waypoint into an active strategic choice.
+3. **Elephantine nilometer** — **ACCEPTED.** Implement as an information-purchasing mechanic. The player invests in maintaining Elephantine's nilometer garrison and receives flood predictions 1-2 seasons early. This makes a passive waypoint into an active strategic choice.
 
-4. **Heliopolis religious legitimacy**: Implement as a satisfaction/morale modifier. Neglecting Heliopolis reduces worker willingness and increases the chance of political events (rival claimants, worker strikes). Sending offerings and maintaining the temple provides a morale bonus. This gives a non-material node real mechanical weight.
+4. **Heliopolis religious legitimacy** — **ACCEPTED with constraint.** Implement as a satisfaction/morale modifier, but only activate the mechanic during the appropriate era and zoom level. This should NOT come online during tutorials or Stage 1. It belongs at Stage 3 (Governor) or later, when the player governs enough sites to care about legitimacy and morale across a region. At that scale, neglecting Heliopolis reduces worker willingness and increases the chance of political events (rival claimants, worker strikes). Sending offerings and maintaining the temple provides a morale bonus. Introducing it too early would add noise before the player understands the core systems it modifies.
 
-5. **Abusir as test site**: In Stage 4, let the player build a small pyramid at Abusir to test their chosen theory before committing to Giza. This mirrors the historical reality that Abusir sits between Giza and Saqqara — a convenient location for a "staging" build — and gives the player a low-stakes environment to practice Theory B/C/E mechanics.
+5. **Abusir as test site** — **ACCEPTED.** In Stage 4, let the player build a small pyramid at Abusir to test their chosen theory before committing to Giza. This mirrors the historical reality that Abusir sits between Giza and Saqqara — a convenient location for a "staging" build — and gives the player a low-stakes environment to practice Theory B/C/E mechanics.
 
-6. **Seasonal route calendar**: Create a visual calendar showing which routes are at peak/reduced/closed capacity across the three seasons. This is the player's primary planning tool from Stage 2 onward. The current `seasonal: boolean` flag in the route data should be expanded to specify WHICH seasons are affected and HOW (capacity multiplier, not just on/off).
+6. **Seasonal route calendar** — **ACCEPTED.** Create a visual calendar showing which routes are at peak/reduced/closed capacity across the three seasons. This is the player's primary planning tool from Stage 2 onward. The current `seasonal: boolean` flag in the route data should be expanded to specify WHICH seasons are affected and HOW (capacity multiplier, not just on/off).
 
-7. **Fayum-Meidum geographic shortcut**: The Fayum and Meidum are geographically close but disconnected in the route data. Adding a route here creates an interesting strategic choice: bypass Memphis entirely for Meidum provisioning, but lose the centralized processing (bread/beer production) that Memphis provides.
+7. ~~**Fayum-Meidum geographic shortcut**~~ — **RESOLVED.** Addressed by recommendation #1. The `nile-fayum-to-meidum` (2 ticks) route is now in `world-map.ts`, creating the strategic bypass option around Memphis.
 
-8. **Copper tool decay as the universal constraint**: Copper tool wear should be the ticking clock across all stages from Stage 2 onward. Every quarry and construction site consumes tools. The Sinai expedition's 20-tick round trip (or 8-tick via Wadi al-Jarf in Stage 4+) creates a steady drumbeat of logistical pressure that the player can never fully ignore. This single mechanic ties the most remote locations (Sinai, Wadi al-Jarf) to every construction site on the map.
+8. **Quarrying methods as a universal constraint** — **REVISED (was: Copper tool decay).** Tool/method consumption should be the ticking clock across all stages from Stage 2 onward, but copper tools were NOT the only quarrying method historically. The game should model multiple quarrying techniques with different trade-offs:
+
+   | Method | Used For | Consumable | Speed | Notes |
+   |--------|----------|------------|-------|-------|
+   | **Copper/bronze tools** (chisels, saws) | Limestone dressing, fine cutting | CopperTools (wear out) | Fast | Best for precision work. Sinai supply chain (20-tick or 8-tick via Wadi al-Jarf) creates logistical pressure. |
+   | **Dolerite pounders** | Granite quarrying, rough shaping | None (durable) | Slow | Historically confirmed for Aswan granite. The pounder itself is nearly indestructible but the work is labor-intensive. Trade-off: no supply chain pressure, but much higher labor-hours per block. |
+   | **Fire-setting** (heat rock, douse with water) | Hard stone quarrying, initial fracturing | Wood + Water | Medium | Effective for granite and hard limestone. Requires fuel (wood is imported/scarce) and water (seasonal). Creates an interesting resource triangle: wood from Byblos, water from the Nile, applied at inland quarries. |
+   | **Wooden wedge expansion** | Limestone block extraction | Wood (minimal) | Medium | Drill holes, insert dry wooden wedges, soak with water. Wood expands and cracks the stone along a controlled line. Low consumable cost but requires patience (curing time). |
+
+   Design implication: different quarry types should consume different tool/method types. The player can choose methods with different trade-offs — copper tools for speed (but constant supply chain pressure from Sinai), dolerite pounders for reliability (but slower output and more labor), fire-setting for hard stone (but wood and water cost), wooden wedges for economy (but slower). This turns quarry management into a strategic choice rather than a single constraint, and ties more of the map's resource nodes into the quarrying pipeline.

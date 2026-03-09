@@ -14,6 +14,92 @@ The through-line: each stage forces the player to zoom out one level of abstract
 
 ---
 
+## Stage 0: Tutorial -- Pre-Dynastic Village Life
+
+### Design Intent
+Following the model of Pharaoh and Children of the Nile, the game opens with several pre-construction tutorial scenarios that teach core systems before any monumental building begins. The player is a village administrator in a small settlement near Memphis, learning the rhythms of the Nile, the needs of workers, and the basics of resource gathering and transport. No pyramids, no mastabas -- just survival and optimization of daily life along the river.
+
+These tutorials establish the mechanical vocabulary the player will use for the rest of the game. By the time the player is asked to build a mastaba, they should already understand food production, worker satisfaction, seasonal cycles, and overland transport.
+
+### Tutorial 0a: "The Flood" -- Nile Cycle and Food Production
+**Scope**: A single farming village on the Nile bank.
+**Duration**: 3 seasons (one full year: Akhet, Peret, Shemu).
+
+The player learns the three-season Egyptian calendar through direct experience:
+- **Akhet (Flood)**: The Nile rises. Farmland floods. No planting possible, but the silt deposited will make next season's crops rich. Workers idle unless given other tasks. The player learns that flood season is NOT wasted time -- it is preparation time.
+- **Peret (Growing)**: Waters recede. The player assigns workers to plant grain in the newly fertile soil. First resource chain: Water + fertile land + labor → Grain.
+- **Shemu (Harvest)**: Grain is harvested. The player learns the processing chain: Grain → Bread, Grain → Beer. Workers consume Bread and Beer. If supply runs out, satisfaction drops and workers leave.
+
+**Core lessons**: Seasonal rhythm as the game's heartbeat. Food as the prerequisite for all other activity. Worker satisfaction as a real constraint, not a cosmetic meter.
+
+**Contract: "A Year on the Nile"**
+```
+Objective:      Survive 1 full year (3 seasons). End with positive food stores.
+Resources:      Water, Grain, Bread, Beer
+Workers:        1 division (~20 villagers)
+Constraints:    Worker satisfaction >= 40% at year-end
+Bonus:          End with >= 50 Grain in stockpile (surplus for next year)
+```
+
+### Tutorial 0b: "Clay and Mud" -- Resource Gathering and Simple Construction
+**Scope**: Same village, expanded to include a clay pit and a mud-brick yard.
+**Duration**: 2 seasons.
+
+The player learns resource extraction and basic processing:
+- Assign workers to the clay pit: labor → Clay
+- Build a mud-brick yard: Clay + Water + Straw → MudBricks
+- Use MudBricks to build village houses (improving worker satisfaction)
+
+This tutorial introduces the concept of processing chains (raw → processed) and the idea that construction requires sustained input, not one-off effort. The player also experiences their first resource bottleneck: the clay pit and the brick yard compete for workers.
+
+**Core lessons**: Resource extraction. Processing chains. Worker allocation trade-offs. Construction as a sustained activity.
+
+**Contract: "Shelter from the Sun"**
+```
+Objective:      Build 3 mud-brick houses (20 MudBricks each)
+Resources:      Clay, Water, Straw, MudBricks
+Workers:        1 division (~20 villagers), split between extraction and production
+Constraints:    Worker satisfaction >= 45% throughout
+Bonus:          Complete in 1 season instead of 2
+```
+
+### Tutorial 0c: "The Road to Memphis" -- Transport and Multi-Site Logistics
+**Scope**: The village plus a distant resource node (a small quarry or a Memphis market). Introduces overland transport.
+**Duration**: 2 seasons.
+
+The player learns that resources at one location must be moved to another:
+- A small limestone outcrop is 2 ticks away from the village by overland path
+- Workers must be assigned to haul stone from the outcrop to the village
+- Transport takes time: a worker hauling stone is not available for farming or brick-making
+- The player must balance production workers vs. transport workers
+
+This tutorial also introduces CopperTools for the first time: the limestone outcrop requires tools to quarry. Tools wear out. The player must acquire tools (provided from Memphis in this tutorial) and manage their consumption.
+
+**Core lessons**: Transport as a cost (time and labor). Multi-site coordination. Tool consumption as a recurring drain. The tension between production and logistics.
+
+**Contract: "Stone for the Village"**
+```
+Objective:      Deliver 20 Limestone blocks to the village
+Resources:      Limestone, CopperTools (provided), MudBricks, Bread, Beer
+Workers:        1.5 divisions (~30 villagers)
+Constraints:    Worker satisfaction >= 45%
+                CopperTools must not reach 0 (resupply available from Memphis)
+Bonus:          Maintain zero idle ticks on the quarry (continuous extraction)
+```
+
+### Tutorial Completion
+Completing all three tutorials unlocks Stage 1 (Foreman). The player has demonstrated mastery of:
+- The seasonal Nile cycle and its impact on all activity
+- Food production and worker sustenance
+- Resource extraction and processing chains
+- Overland transport and multi-site coordination
+- Tool consumption management
+- Worker satisfaction as a binding constraint
+
+The narrative hook: a minor noble has noticed the player's competence and offers a commission -- build a mastaba tomb at Saqqara. This is the player's first real construction project, and it requires everything they learned in the tutorials working together.
+
+---
+
 ## Stage 1: Foreman -- Mastabas at Saqqara
 
 ### Historical Site
@@ -583,27 +669,27 @@ Historically grounded: the earliest recorded labor strike occurred at Deir el-Me
 
 How the resource palette expands across stages:
 
-| Resource | Stage 1 | Stage 2 | Stage 3 | Stage 4 | Stage 5 |
-|---|---|---|---|---|---|
-| Clay | core | yes | yes | yes | yes |
-| Water | core | yes | yes | yes | yes |
-| MudBricks | core | yes | yes | yes | yes |
-| Grain | core | yes | yes | yes | yes |
-| Bread | core | yes | yes | yes | yes |
-| Beer | -- | core | yes | yes | yes |
-| Limestone | intro | core | yes | yes | yes |
-| CopperTools | intro | core | yes | yes | yes |
-| DressedStone | -- | intro | core | yes | yes |
-| Sand | -- | intro | yes | yes | yes |
-| Wood | -- | intro | yes | yes | yes |
-| Rope | -- | intro | yes | yes | yes |
-| Gypsum | -- | -- | intro | yes | yes |
-| Barges | -- | -- | intro | yes | yes |
-| Granite | -- | -- | intro | core | yes |
-| Papyrus | -- | -- | -- | intro | core |
-| GeopolymerMix | -- | -- | -- | Theory D | Theory D |
-| Alabaster | -- | -- | -- | -- | intro |
-| Gold | -- | -- | -- | -- | intro |
+| Resource | Stage 0 | Stage 1 | Stage 2 | Stage 3 | Stage 4 | Stage 5 |
+|---|---|---|---|---|---|---|
+| Water | core | yes | yes | yes | yes | yes |
+| Grain | core | yes | yes | yes | yes | yes |
+| Bread | intro (0a) | core | yes | yes | yes | yes |
+| Beer | intro (0a) | core | yes | yes | yes | yes |
+| Clay | intro (0b) | core | yes | yes | yes | yes |
+| MudBricks | intro (0b) | core | yes | yes | yes | yes |
+| Limestone | intro (0c) | core | core | yes | yes | yes |
+| CopperTools | intro (0c) | yes | core | yes | yes | yes |
+| DressedStone | -- | -- | intro | core | yes | yes |
+| Sand | -- | -- | intro | yes | yes | yes |
+| Wood | -- | -- | intro | yes | yes | yes |
+| Rope | -- | -- | intro | yes | yes | yes |
+| Gypsum | -- | -- | -- | intro | yes | yes |
+| Barges | -- | -- | -- | intro | yes | yes |
+| Granite | -- | -- | -- | intro | core | yes |
+| Papyrus | -- | -- | -- | -- | intro | core |
+| GeopolymerMix | -- | -- | -- | -- | Theory D | Theory D |
+| Alabaster | -- | -- | -- | -- | -- | intro |
+| Gold | -- | -- | -- | -- | -- | intro |
 
 "core" = central to the stage's challenge. "intro" = first appears. "yes" = available and relevant.
 
@@ -612,6 +698,22 @@ How the resource palette expands across stages:
 - **Gold** (raw) -- from Nubia, far south. Used for burial goods, temple decoration, and diplomatic gifts. Extremely limited supply. Needed only in Stage 5.
 
 Note: Alabaster and Gold are referenced in the existing DESIGN.md resource model and should be added to the ResourceType enum.
+
+### Quarrying Methods and Tool Alternatives
+
+CopperTools appear in Stage 0c and remain present throughout, but historically copper/bronze tools were NOT the only quarrying method. The game should model multiple quarrying techniques as a strategic choice for the player:
+
+- **Copper/bronze tools** (chisels, saws): Fast, precise, essential for fine dressing and limestone cutting. But they wear out and require the Sinai supply chain (20-tick overland or 8-tick via Wadi al-Jarf). Best for: Tura casing stone, precision work, DressedStone production.
+
+- **Dolerite pounders**: Nearly indestructible stone balls used to pound granite into shape. Historically confirmed at Aswan. Extremely slow and labor-intensive, but require no consumable supply chain. Best for: Aswan granite quarrying where copper tools are ineffective against the hardness anyway.
+
+- **Fire-setting**: Heat rock faces with fire, then douse with water to fracture. Effective for hard stone and initial block extraction. Requires Wood (fuel, imported/scarce) and Water (seasonal). Best for: granite quarrying, opening new quarry faces.
+
+- **Wooden wedge expansion**: Drill holes along a desired fracture line, insert dry wooden wedges, soak with water. The expanding wood cracks the stone cleanly. Minimal consumables but slow (requires soaking/curing time). Best for: controlled limestone block extraction at local quarries.
+
+**Design implication**: Different quarry sites should favor different methods. Aswan granite is too hard for copper tools -- dolerite pounders and fire-setting are required. Tura limestone yields to copper chisels efficiently. Local limestone can be extracted with wooden wedges to conserve copper. The player's choice of method at each quarry site becomes a strategic decision: spend copper for speed, or conserve copper by using slower alternatives? This turns the Sinai copper pipeline from a binary constraint into one factor in a richer optimization problem.
+
+The CopperTools row in the resource table above should be understood as representing the general "quarrying tools/methods" budget, with copper being the fastest but not the only option.
 
 ---
 
@@ -636,6 +738,7 @@ Each stage introduces new automation capabilities that let the player manage inc
 
 | Stage | New Automation | What It Replaces |
 |---|---|---|
+| 0 (Tutorial) | None (fully manual) | -- |
 | 1 (Foreman) | Task queues | Manual worker-to-task assignment |
 | 2 (Overseer) | Route automation, stockpile thresholds | Manual transport dispatching, manual production switching |
 | 3 (Governor) | Governor policies, alert systems | Manual monitoring of all sites, manual crisis response |
@@ -650,12 +753,13 @@ The critical design principle: **automation is never taken away.** Each stage ad
 
 | Stage | Duration (flood cycles) | Duration (seasons) | Approx. Real Play Time |
 |---|---|---|---|
-| 1 (Foreman) | < 1 | 2 | 15-30 minutes (tutorial) |
+| 0 (Tutorial) | ~2 | ~7 | 20-40 minutes |
+| 1 (Foreman) | < 1 | 2 | 15-30 minutes |
 | 2 (Overseer) | 3 | 9 | 1-2 hours |
 | 3 (Governor) | 4 + 5 = 9 | 12 + 15 = 27 | 3-5 hours |
 | 4 (Vizier) | 8 + planning | 24 + planning | 4-6 hours |
 | 5 (Pharaoh) | 50+ | 150+ | 10-20+ hours |
-| **Total** | **~70+** | **~210+** | **~20-35+ hours** |
+| **Total** | **~72+** | **~217+** | **~21-36+ hours** |
 
 Stage 5 is intentionally the longest by a wide margin. It is the endgame. The player has spent 10-15 hours learning systems, and now they deploy everything they know across a multi-generational megaproject.
 
@@ -667,7 +771,7 @@ For tuning difficulty across stages and difficulty settings:
 
 1. **Nile variance**: Low floods can be +-10% (easy) to +-40% (hard). Drought frequency: every 8-12 cycles (easy) to every 4-6 cycles (hard).
 2. **Contract strictness**: Missed delivery tolerance ranges from 20% (easy) to 5% (hard). Satisfaction thresholds range from 40% (easy) to 70% (hard).
-3. **Tool wear rate**: CopperTools consumption per block: 0.05 (easy) to 0.3 (hard).
+3. **Tool wear rate**: CopperTools consumption per block: 0.05 (easy) to 0.3 (hard). Note: this applies to copper tool methods; dolerite pounders and wooden wedges have separate (slower but non-consumable or low-consumable) effectiveness curves. See "Quarrying Methods and Tool Alternatives" above.
 4. **Worker turnover**: Retirement/death rate per flood cycle: 2% (easy) to 8% (hard). Training time for skilled workers: 1 season (easy) to 4 seasons (hard).
 5. **Event severity**: Failure events (Meidum collapse, Bent Pyramid cracks) can destroy 20% (easy) to 60% (hard) of completed work.
 6. **Pharaoh patience**: Confidence drain per missed delivery: 2% (easy) to 10% (hard).
