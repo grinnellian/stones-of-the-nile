@@ -111,6 +111,41 @@ Multi-criteria: Culture Rating, Prosperity Rating, Monument Rating, Kingdom Rati
 - Each layer requires materials delivered before proceeding to next
 - Road layout and storage yard placement critical for throughput
 
+## Theory E: Accretion Overbuild with Cascading Material
+
+Recent theory (needs specific attribution — user encountered it recently) proposing:
+
+### Core Concept
+- Each pyramid built as a **massive trapezoidal overbuild** significantly larger than the final form
+- Construction ramps are **integrated into the overbuild mass** — not separate disposable infrastructure
+- After reaching full height, the excess is **carved down** to achieve the final smooth pyramid faces
+- The removed material is **not waste** — it becomes the building material for the next structure
+
+### The Cascading Mass Accounting
+The elegant mathematical insight:
+- Great Pyramid overbuild mass ≈ mass needed for Khafre's pyramid + its overbuild
+- Khafre's overbuild ≈ Menkaure's pyramid + its overbuild
+- Menkaure's overbuild ≈ temples, causeways, enclosure walls, mastaba fields
+- **Total quarried material = total complex mass** (accounting for ~1 million tons of non-pyramid structures)
+- No unexplained surplus or deficit of material
+
+### Why This Solves Multiple Problems
+1. **Ramp disposal problem**: Ramps don't need to be removed — they're carved into the pyramid face
+2. **Alignment problem**: Final precision faces are cut top-down on a solid mass, not built course-by-course
+3. **Material accounting**: Explains where ALL the quarried stone ended up
+4. **Construction sequence**: Provides a natural ordering for the entire complex build
+
+### Two-Phase Construction Per Structure
+1. **Build-up phase**: Bulk operations. Hauling, stacking, filling. External ramp logistics for lower portion, integrated ramp for upper. Large unskilled workforce.
+2. **Carve-down phase**: Precision operations. Skilled stonecutters working top-down, removing excess to reveal final faces. Generates massive material output. Smaller but highly skilled workforce.
+
+### Implications for Game Design
+- Transforms the complex from isolated projects into a **directed acyclic graph** of material flow
+- Every structure is both a **consumer** (during build-up) and a **producer** (during carve-down)
+- Overbuild decisions propagate: more overbuild = easier ramps but more carving + more downstream material
+- The carve-down → next-structure pipeline creates natural multi-site gameplay
+- Timing coordination across the complex is the core challenge
+
 ## SpaceChem Design Patterns
 
 - Build a **machine**, not a solution — systems must run continuously and repeatedly

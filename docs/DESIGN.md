@@ -134,7 +134,24 @@ Each theory is a fundamentally different architecture. Choosing one reshapes you
 - **Bottleneck**: Recipe consistency, mold production, curing time.
 - **Player archetype**: The process engineer. Optimize the recipe and the pipeline.
 
-**Design goal**: Each theory should feel like a legitimately different game to play, not just reskinned numbers. The supply chains, labor requirements, failure modes, and optimization strategies should be distinct.
+#### Theory E: Accretion Overbuild (THE GAME'S PREFERRED THEORY)
+- **Concept**: Build each pyramid as a massive stepped trapezoid significantly larger than the final form, with ramps integrated directly into the overbuild mass. Then carve down to the final smooth faces. The removed material cascades to become the building material for the next structure in the complex.
+- **The key insight**: The Great Pyramid's overbuild mass ≈ Khafre's pyramid + overbuild. Khafre's overbuild ≈ Menkaure + overbuild. Menkaure's overbuild ≈ temples, causeways, enclosure walls. Total quarried material = total complex mass. No waste, no mystery surplus.
+- **Why this is the game's preferred theory**: It transforms the Giza complex from isolated hub-and-spoke projects into a **supply web / DAG**. Every structure is both consumer and producer. The pyramid IS the stockpile for the next project.
+- **Supply chain**: Two distinct phases per structure:
+  1. **Build-up phase**: Bulk hauling, same as external ramp theory but ramps are structural, not separate infrastructure
+  2. **Carve-down phase**: Precision stonecutting, completely different labor (skilled cutters, not haulers), generates massive material output that downstream logistics must absorb
+- **Labor**: Phase-dependent. Build-up = bulk haulers. Carve-down = precision masons. The transition between phases is a workforce retooling event.
+- **Bottleneck**: Downstream absorption. When you carve the Great Pyramid, you generate a flood of material. If Khafre's site isn't ready to receive, you have a backpressure problem. Timing and coordination across the complex is everything.
+- **Player archetype**: The systems thinker. You're not optimizing one pyramid — you're optimizing the whole complex as an interconnected pipeline.
+- **Game structure implications**:
+  - The "revisit and revise" mechanic becomes STRUCTURAL, not optional — you must return to carve down
+  - Every node in the complex is both a consumer and producer
+  - No terminal node until the last wall is finished
+  - Creates natural multi-site gameplay from the core construction mechanic itself
+  - The player's overbuild decisions propagate through the entire complex DAG
+
+**Design goal**: Each theory should feel like a legitimately different game to play, not just reskinned numbers. The supply chains, labor requirements, failure modes, and optimization strategies should be distinct. Theory E is the game's canonical approach and should receive the deepest implementation, with other theories available as alternative playstyles.
 
 ---
 
