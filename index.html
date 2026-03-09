@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stones of the Nile</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #1a1a2e;
+      color: #e0d5c1;
+      font-family: 'Courier New', monospace;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    h1 {
+      color: #c9a85c;
+      font-size: 2em;
+      margin-bottom: 5px;
+    }
+    h2 {
+      color: #c9a85c;
+      font-size: 1.2em;
+      margin: 15px 0 8px;
+      border-bottom: 1px solid #3a3a5e;
+      padding-bottom: 4px;
+    }
+    .subtitle {
+      color: #8b7d6b;
+      font-size: 0.9em;
+      margin-bottom: 20px;
+    }
+    .dashboard {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+    .panel {
+      background: #16213e;
+      border: 1px solid #3a3a5e;
+      border-radius: 6px;
+      padding: 12px;
+    }
+    .panel.full-width {
+      grid-column: 1 / -1;
+    }
+    .controls {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    button {
+      background: #c9a85c;
+      color: #1a1a2e;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 0.9em;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover { background: #dbb96e; }
+    button:disabled { background: #5a5a5e; color: #8a8a8e; cursor: default; }
+    button.danger { background: #8b4049; color: #e0d5c1; }
+    button.danger:hover { background: #a34d58; }
+    .resource-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 2px 0;
+      font-size: 0.85em;
+    }
+    .resource-name { color: #a0a0c0; }
+    .resource-qty { color: #e0d5c1; font-weight: bold; }
+    .resource-qty.zero { color: #5a5a5e; }
+    .season-indicator {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 3px;
+      font-weight: bold;
+      font-size: 0.85em;
+    }
+    .season-akhet { background: #1e3a5f; color: #6db3f2; }
+    .season-peret { background: #2d4a1e; color: #8fc35a; }
+    .season-shemu { background: #5a3a1e; color: #e8a83e; }
+    .flood-bar {
+      height: 8px;
+      background: #3a3a5e;
+      border-radius: 4px;
+      margin-top: 4px;
+      overflow: hidden;
+    }
+    .flood-fill {
+      height: 100%;
+      background: #4a8fe8;
+      border-radius: 4px;
+      transition: width 0.3s;
+    }
+    .contract-status {
+      padding: 4px 8px;
+      border-radius: 3px;
+      font-size: 0.8em;
+      font-weight: bold;
+    }
+    .status-active { background: #2d4a1e; color: #8fc35a; }
+    .status-completed { background: #1e3a5f; color: #6db3f2; }
+    .status-failed { background: #5a1e1e; color: #e85a5a; }
+    .log {
+      max-height: 200px;
+      overflow-y: auto;
+      font-size: 0.8em;
+      line-height: 1.4;
+    }
+    .log-entry { padding: 1px 0; }
+    .log-production { color: #8fc35a; }
+    .log-transport { color: #6db3f2; }
+    .log-contract { color: #c9a85c; }
+    .log-season { color: #e8a83e; font-weight: bold; }
+    .progress-bar {
+      display: flex;
+      gap: 3px;
+      margin-top: 4px;
+    }
+    .progress-pip {
+      width: 20px;
+      height: 12px;
+      border-radius: 2px;
+      background: #3a3a5e;
+    }
+    .progress-pip.fulfilled { background: #8fc35a; }
+    .progress-pip.missed { background: #e85a5a; }
+    .progress-pip.pending { background: #3a3a5e; }
+    .speed-label { color: #8b7d6b; font-size: 0.85em; }
+    .site-name { color: #c9a85c; font-weight: bold; font-size: 0.9em; }
+    .producer-status { font-size: 0.8em; color: #a0a0c0; }
+    .producer-active { color: #8fc35a; }
+    .producer-idle { color: #e85a5a; }
+  </style>
+</head>
+<body>
+  <h1>STONES OF THE NILE</h1>
+  <p class="subtitle">Build pyramids. Debug logistics. Rule Egypt.</p>
+  <div id="app"></div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
