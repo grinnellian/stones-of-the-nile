@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(~/.claude/projects/**)",
+      "Edit(~/.claude/projects/**)",
+      "Write(~/.claude/projects/**)"
+    ]
+  }
+}
